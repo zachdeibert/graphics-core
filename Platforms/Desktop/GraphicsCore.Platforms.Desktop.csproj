@@ -1,14 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
-      <Compile Remove="Generator\**" />
-      <EmbeddedResource Remove="Generator\**" />
-      <None Remove="Generator\**" />
+        <Compile Remove="Generator\**" />
+        <EmbeddedResource Remove="Generator\**" />
+        <None Remove="Generator\**" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\GraphicsCore.csproj" />
     </ItemGroup>
     <PropertyGroup>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp1.0</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+        <Compile Remove="Generator\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+    </ItemGroup>
 </Project>

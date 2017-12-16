@@ -1,0 +1,49 @@
+#!/bin/bash
+set -e
+cd "$(dirname "$0")"
+
+printUsage() {
+    echo "Usage: $0 <platform name> <example name>" >&2
+    echo >&2
+    echo "Platforms:" >&2
+    for plat in ../Platforms/*/; do
+        echo "$plat" | sed -e "s|^.*/\([^/]*\)/$| - \1|"
+    done
+    echo >&2
+    echo "Examples:" >&2
+    for ex in */; do
+        echo "$ex" | sed -e "s|\([^/]*\)/$| - \1|" >&2
+    done
+    exit 1
+}
+
+if [ $# -ne 2 ]; then
+    printUsage
+fi
+if [ ! -d "../Platforms/$1" ]; then
+    echo "Platform does not exist." >&2
+    echo >&2
+    printUsage
+fi
+if [ ! -d "$2" ]; then
+    echo "Example does not exist." >&2
+    echo >&2
+    printUsage
+fi
+
+dotnet build "../Platforms/$1/GraphicsCore.Platforms.$1.csproj"
+dotnet build "$2/$2.csproj"
+
+dir=$(mktemp -u)
+cleanup() {
+    if [ -d "$dir" ]; then
+        rm -rf "$dir"
+    fi
+}
+trap cleanup EXIT
+mkdir -p "$dir"
+
+cp "../Platforms/$1/bin/Debug/netcoreapp1.0/"* "$dir"
+cp "$2/bin/Debug/netstandard1.5/"* "$dir"
+
+dotnet "$dir/GraphicsCore.Platforms.$1.dll"

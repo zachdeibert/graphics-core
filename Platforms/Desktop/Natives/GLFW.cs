@@ -8,6 +8,8 @@ using System;
 using System.Runtime.InteropServices;
 using System.Security;
 
+#pragma warning disable 618
+
 namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
 {
     /// <summary>Client API function pointer type.</summary>

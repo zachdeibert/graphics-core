@@ -3,6 +3,7 @@
         <ProjectReference Include="..\..\GraphicsCore.csproj" />
     </ItemGroup>
     <PropertyGroup>
-        <TargetFramework>netstandard1.0</TargetFramework>
+        <AssemblyName>GraphicsCore.Application</AssemblyName>
+        <TargetFramework>netstandard1.5</TargetFramework>
     </PropertyGroup>
 </Project>
