@@ -63,9 +63,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             switch (unmanagedDllName) {
                 case "glfw3":
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
-                        return LoadFromNameWindows("libglfw.dll");
+                        return LoadFromNameWindows("glfw3.dll");
                     } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
-                        return LoadFromNameUnix("libglfw.dylib");
+                        return LoadFromNameUnix("glfw.dylib");
                     } else {
                         return LoadFromNameUnix("libglfw.so.3");
                     }

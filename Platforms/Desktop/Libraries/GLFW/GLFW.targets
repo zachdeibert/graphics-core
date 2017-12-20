@@ -1,0 +1,15 @@
+<Project>
+    <Target Name="CleanGlfw" BeforeTargets="Clean">
+        <Exec Command="make clean" WorkingDirectory="$(MSBuildThisFileDirectory)" />
+    </Target>
+    <Target Name="Glfw" BeforeTargets="CoreCompile">
+        <Exec Command="make" WorkingDirectory="$(MSBuildThisFileDirectory)" />
+    </Target>
+    <Target Name="CopyGlfw" BeforeTargets="CopyFilesToOutputDirectory" DependsOnTargets="Glfw">
+        <ItemGroup>
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.so.3')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.so.3" />
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw.dylib')" Include="$(MSBuildThisFileDirectory)/bin/glfw.dylib" />
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw3.dll')" Include="$(MSBuildThisFileDirectory)/bin/glfw3.dll" />
+        </ItemGroup>
+    </Target>
+</Project>

@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <Compile Remove="Generator\**" />
-        <EmbeddedResource Remove="Generator\**" />
-        <None Remove="Generator\**" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\GraphicsCore.csproj" />
@@ -13,9 +11,7 @@
         <TargetFramework>netcoreapp1.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Remove="Generator\**" />
-    </ItemGroup>
-    <ItemGroup>
         <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     </ItemGroup>
+    <Import Project="Libraries\GLFW\GLFW.targets" />
 </Project>
