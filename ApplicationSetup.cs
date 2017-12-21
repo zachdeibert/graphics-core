@@ -4,8 +4,7 @@ using System.Reflection;
 
 namespace Com.GitHub.ZachDeibert.GraphicsCore {
     internal static class ApplicationSetup {
-        internal static void Run(IRenderContextFactory factory) {
-            Assembly asm = Assembly.Load(new AssemblyName("GraphicsCore.Application"));
+        internal static void Run(IRenderContextFactory factory, Assembly asm) {
             TypeInfo[] types = asm.ExportedTypes.Select(t => t.GetTypeInfo()).Where(t => t.GetCustomAttribute<ApplicationAttribute>() != null).ToArray();
             switch (types.Length) {
                 case 0:

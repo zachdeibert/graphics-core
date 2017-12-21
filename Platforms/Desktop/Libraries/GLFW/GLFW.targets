@@ -7,9 +7,22 @@
     </Target>
     <Target Name="CopyGlfw" BeforeTargets="CopyFilesToOutputDirectory" DependsOnTargets="Glfw">
         <ItemGroup>
-            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.so.3')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.so.3" />
-            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw.dylib')" Include="$(MSBuildThisFileDirectory)/bin/glfw.dylib" />
-            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw3.dll')" Include="$(MSBuildThisFileDirectory)/bin/glfw3.dll" />
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.so.3')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.so.3">
+                <Library>GLFW</Library>
+            </NativeReferenceFile>
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib">
+                <Library>GLFW</Library>
+            </NativeReferenceFile>
+            <NativeReferenceFile Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw3.dll')" Include="$(MSBuildThisFileDirectory)/bin/glfw3.dll">
+                <Library>GLFW</Library>
+            </NativeReferenceFile>
+        </ItemGroup>
+    </Target>
+    <Target Name="CopyGlfwToPublishFolder" AfterTargets="ComputeFilesToPublish" DependsOnTargets="CopyGlfw">
+        <ItemGroup>
+            <ResolvedFileToPublish Include="@(NativeReferenceFile)" Condition="'%(NativeReferenceFile.Library)' == 'GLFW'">
+                <RelativePath>%(NativeReferenceFile.Filename)%(NativeReferenceFile.Extension)</RelativePath>
+            </ResolvedFileToPublish>
         </ItemGroup>
     </Target>
 </Project>

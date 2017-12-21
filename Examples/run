@@ -43,7 +43,7 @@ cleanup() {
 trap cleanup EXIT
 mkdir -p "$dir"
 
-cp "../Platforms/$1/bin/Debug/netcoreapp1.0/"* "$dir"
-cp "$2/bin/Debug/netstandard1.5/"* "$dir"
+cp -r "../Platforms/$1/bin/Debug/netcoreapp2.0/"* "$dir"
+cp -r "$2/bin/Debug/netstandard1.5/"* "$dir"
 
 dotnet "$dir/GraphicsCore.Platforms.$1.dll"

@@ -31,13 +31,15 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
 
         IntPtr LoadFromNameUnix(string name) {
             foreach (string dir in LibraryDirs) {
-                string file = Path.Combine(dir, name);
-                if (File.Exists(file)) {
-                    return LoadUnmanagedDllFromPath(file);
-                } else foreach (string subdir in Directory.GetDirectories(dir, "*-*-*")) {
-                    file = Path.Combine(subdir, name);
+                if (Directory.Exists(dir)) {
+                    string file = Path.Combine(dir, name);
                     if (File.Exists(file)) {
                         return LoadUnmanagedDllFromPath(file);
+                    } else foreach (string subdir in Directory.GetDirectories(dir, "*-*-*")) {
+                        file = Path.Combine(subdir, name);
+                        if (File.Exists(file)) {
+                            return LoadUnmanagedDllFromPath(file);
+                        }
                     }
                 }
             }
@@ -65,7 +67,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
                         return LoadFromNameWindows("glfw3.dll");
                     } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
-                        return LoadFromNameUnix("glfw.dylib");
+                        return LoadFromNameUnix("libglfw.3.dylib");
                     } else {
                         return LoadFromNameUnix("libglfw.so.3");
                     }
@@ -78,7 +80,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                         return LoadFromNameUnix("libGL.so");
                     }
                 default:
-                    throw new DllNotFoundException(unmanagedDllName);
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                        return LoadFromNameWindows(string.Concat(unmanagedDllName, ".dll"));
+                    } else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+                        return LoadFromNameUnix(string.Concat(unmanagedDllName, ".dylib"));
+                    } else {
+                        return LoadFromNameUnix(string.Concat(unmanagedDllName, ".so"));
+                    }
             }
         }
     }

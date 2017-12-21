@@ -7,11 +7,11 @@ WINDOWS_CC = x86_64-w64-mingw32-gcc
 OUTDIR = bin
 
 .PHONY: all
-all: $(OUTDIR)/libglfw.so.$(VERSION_MAJOR) $(OUTDIR)/glfw.dylib $(OUTDIR)/glfw$(VERSION_MAJOR).dll
+all: $(OUTDIR)/libglfw.so.$(VERSION_MAJOR) $(OUTDIR)/libglfw.$(VERSION_MAJOR).dylib $(OUTDIR)/glfw$(VERSION_MAJOR).dll
 
 .PHONY: clean
 clean:
-	rm -rf $(OUTDIR)/libglfw.so.$(VERSION_MAJOR) $(OUTDIR)/glfw.dylib $(OUTDIR)/glfw$(VERSION_MAJOR).dll \
+	rm -rf $(OUTDIR)/libglfw.so.$(VERSION_MAJOR) $(OUTDIR)/libglfw.$(VERSION_MAJOR).dylib $(OUTDIR)/glfw$(VERSION_MAJOR).dll \
 		glfw-$(VERSION)-linux glfw-$(VERSION)-mac glfw-$(VERSION)-windows glfw-$(VERSION) glfw-$(VERSION).zip
 
 glfw-$(VERSION).zip:
@@ -29,16 +29,16 @@ glfw-$(VERSION)-linux/Makefile: glfw-$(VERSION)/CMakeLists.txt
 
 $(OUTDIR)/libglfw.so.$(VERSION_MAJOR): glfw-$(VERSION)-linux/Makefile
 	mkdir -p "$(OUTDIR)"
-	$(MAKE) -C "glfw-$(VERSION)-linux" glfw && cp "glfw-$(VERSION)-linux/src/libglfw.so.$(VERSION_MAJOR)" "$@" || true
+	$(MAKE) -C "glfw-$(VERSION)-linux" glfw; cp --copy-contents "glfw-$(VERSION)-linux/src/libglfw.so.$(VERSION_MAJOR)" "$@" || true
 
 glfw-$(VERSION)-mac/Makefile: glfw-$(VERSION)/CMakeLists.txt
 	mkdir -p "glfw-$(VERSION)-mac"
 	cd "glfw-$(VERSION)-mac" && cmake $(OPTS) -DCMAKE_SYSTEM_NAME=Darwin -DCMAKE_C_COMPILER=$(MAC_CC) "../glfw-$(VERSION)" || \
 		echo -e '.PHONY: glfw\nglfw:\n\techo "Skipping Mac build." >&2' > Makefile
 
-$(OUTDIR)/glfw.dylib: glfw-$(VERSION)-mac/Makefile
+$(OUTDIR)/libglfw.$(VERSION_MAJOR).dylib: glfw-$(VERSION)-mac/Makefile
 	mkdir -p "$(OUTDIR)"
-	$(MAKE) -C "glfw-$(VERSION)-mac" glfw && cp "glfw-$(VERSION)-mac/src/glfw.dylib" "$@" || true
+	$(MAKE) -C "glfw-$(VERSION)-mac" glfw; cp --copy-contents "glfw-$(VERSION)-mac/src/libglfw.$(VERSION_MAJOR).dylib" "$@" || true
 
 glfw-$(VERSION)-windows/Makefile: glfw-$(VERSION)/CMakeLists.txt
 	mkdir -p "glfw-$(VERSION)-windows"
@@ -47,4 +47,4 @@ glfw-$(VERSION)-windows/Makefile: glfw-$(VERSION)/CMakeLists.txt
 
 $(OUTDIR)/glfw$(VERSION_MAJOR).dll: glfw-$(VERSION)-windows/Makefile
 	mkdir -p "$(OUTDIR)"
-	$(MAKE) -C "glfw-$(VERSION)-windows" glfw && cp "glfw-$(VERSION)-windows/src/glfw$(VERSION_MAJOR).dll" "$@" || true
+	$(MAKE) -C "glfw-$(VERSION)-windows" glfw; cp --copy-contents "glfw-$(VERSION)-windows/src/glfw$(VERSION_MAJOR).dll" "$@" || true
