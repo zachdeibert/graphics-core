@@ -1757,9 +1757,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlAlphaFunc(func, @ref);
         }
 
-        public static byte GlAreTexturesResident(int n, ref uint textures, byte* residences)
+        public static byte GlAreTexturesResident(int n, uint[] textures, byte* residences)
         {
-            fixed (uint* __refParamPtr1 = &textures)
+            fixed (uint* __refParamPtr1 = textures)
             {
                 var __arg1 = __refParamPtr1;
                 var __ret = __Internal.GlAreTexturesResident(n, __arg1, residences);
@@ -1832,9 +1832,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlClearStencil(s);
         }
 
-        public static void GlClipPlane(uint plane, ref double equation)
+        public static void GlClipPlane(uint plane, double[] equation)
         {
-            fixed (double* __refParamPtr1 = &equation)
+            fixed (double* __refParamPtr1 = equation)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlClipPlane(plane, __arg1);
@@ -1856,9 +1856,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3d(red, green, blue);
         }
 
-        public static void GlColor3dv(ref double v)
+        public static void GlColor3dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3dv(__arg0);
@@ -1870,9 +1870,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3f(red, green, blue);
         }
 
-        public static void GlColor3fv(ref float v)
+        public static void GlColor3fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3fv(__arg0);
@@ -1884,9 +1884,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3i(red, green, blue);
         }
 
-        public static void GlColor3iv(ref int v)
+        public static void GlColor3iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3iv(__arg0);
@@ -1898,9 +1898,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3s(red, green, blue);
         }
 
-        public static void GlColor3sv(ref short v)
+        public static void GlColor3sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3sv(__arg0);
@@ -1922,9 +1922,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3ui(red, green, blue);
         }
 
-        public static void GlColor3uiv(ref uint v)
+        public static void GlColor3uiv(uint[] v)
         {
-            fixed (uint* __refParamPtr0 = &v)
+            fixed (uint* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3uiv(__arg0);
@@ -1936,9 +1936,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor3us(red, green, blue);
         }
 
-        public static void GlColor3usv(ref ushort v)
+        public static void GlColor3usv(ushort[] v)
         {
-            fixed (ushort* __refParamPtr0 = &v)
+            fixed (ushort* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor3usv(__arg0);
@@ -1960,9 +1960,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4d(red, green, blue, alpha);
         }
 
-        public static void GlColor4dv(ref double v)
+        public static void GlColor4dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4dv(__arg0);
@@ -1974,9 +1974,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4f(red, green, blue, alpha);
         }
 
-        public static void GlColor4fv(ref float v)
+        public static void GlColor4fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4fv(__arg0);
@@ -1988,9 +1988,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4i(red, green, blue, alpha);
         }
 
-        public static void GlColor4iv(ref int v)
+        public static void GlColor4iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4iv(__arg0);
@@ -2002,9 +2002,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4s(red, green, blue, alpha);
         }
 
-        public static void GlColor4sv(ref short v)
+        public static void GlColor4sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4sv(__arg0);
@@ -2026,9 +2026,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4ui(red, green, blue, alpha);
         }
 
-        public static void GlColor4uiv(ref uint v)
+        public static void GlColor4uiv(uint[] v)
         {
-            fixed (uint* __refParamPtr0 = &v)
+            fixed (uint* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4uiv(__arg0);
@@ -2040,9 +2040,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlColor4us(red, green, blue, alpha);
         }
 
-        public static void GlColor4usv(ref ushort v)
+        public static void GlColor4usv(ushort[] v)
         {
-            fixed (ushort* __refParamPtr0 = &v)
+            fixed (ushort* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlColor4usv(__arg0);
@@ -2099,9 +2099,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlDeleteLists(list, range);
         }
 
-        public static void GlDeleteTextures(int n, ref uint textures)
+        public static void GlDeleteTextures(int n, uint[] textures)
         {
-            fixed (uint* __refParamPtr1 = &textures)
+            fixed (uint* __refParamPtr1 = textures)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlDeleteTextures(n, __arg1);
@@ -2193,9 +2193,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlEvalCoord1d(u);
         }
 
-        public static void GlEvalCoord1dv(ref double u)
+        public static void GlEvalCoord1dv(double[] u)
         {
-            fixed (double* __refParamPtr0 = &u)
+            fixed (double* __refParamPtr0 = u)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlEvalCoord1dv(__arg0);
@@ -2207,9 +2207,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlEvalCoord1f(u);
         }
 
-        public static void GlEvalCoord1fv(ref float u)
+        public static void GlEvalCoord1fv(float[] u)
         {
-            fixed (float* __refParamPtr0 = &u)
+            fixed (float* __refParamPtr0 = u)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlEvalCoord1fv(__arg0);
@@ -2221,9 +2221,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlEvalCoord2d(u, v);
         }
 
-        public static void GlEvalCoord2dv(ref double u)
+        public static void GlEvalCoord2dv(double[] u)
         {
-            fixed (double* __refParamPtr0 = &u)
+            fixed (double* __refParamPtr0 = u)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlEvalCoord2dv(__arg0);
@@ -2235,9 +2235,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlEvalCoord2f(u, v);
         }
 
-        public static void GlEvalCoord2fv(ref float u)
+        public static void GlEvalCoord2fv(float[] u)
         {
-            fixed (float* __refParamPtr0 = &u)
+            fixed (float* __refParamPtr0 = u)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlEvalCoord2fv(__arg0);
@@ -2264,9 +2264,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlEvalPoint2(i, j);
         }
 
-        public static void GlFeedbackBuffer(int size, uint type, ref float buffer)
+        public static void GlFeedbackBuffer(int size, uint type, float[] buffer)
         {
-            fixed (float* __refParamPtr2 = &buffer)
+            fixed (float* __refParamPtr2 = buffer)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlFeedbackBuffer(size, type, __arg2);
@@ -2288,9 +2288,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlFogf(pname, param);
         }
 
-        public static void GlFogfv(uint pname, ref float @params)
+        public static void GlFogfv(uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr1 = &@params)
+            fixed (float* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlFogfv(pname, __arg1);
@@ -2302,9 +2302,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlFogi(pname, param);
         }
 
-        public static void GlFogiv(uint pname, ref int @params)
+        public static void GlFogiv(uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr1 = &@params)
+            fixed (int* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlFogiv(pname, __arg1);
@@ -2327,9 +2327,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             return __ret;
         }
 
-        public static void GlGenTextures(int n, ref uint textures)
+        public static void GlGenTextures(int n, uint[] textures)
         {
-            fixed (uint* __refParamPtr1 = &textures)
+            fixed (uint* __refParamPtr1 = textures)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGenTextures(n, __arg1);
@@ -2341,18 +2341,18 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlGetBooleanv(pname, @params);
         }
 
-        public static void GlGetClipPlane(uint plane, ref double equation)
+        public static void GlGetClipPlane(uint plane, double[] equation)
         {
-            fixed (double* __refParamPtr1 = &equation)
+            fixed (double* __refParamPtr1 = equation)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetClipPlane(plane, __arg1);
             }
         }
 
-        public static void GlGetDoublev(uint pname, ref double @params)
+        public static void GlGetDoublev(uint pname, double[] @params)
         {
-            fixed (double* __refParamPtr1 = &@params)
+            fixed (double* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetDoublev(pname, __arg1);
@@ -2365,108 +2365,108 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             return __ret;
         }
 
-        public static void GlGetFloatv(uint pname, ref float @params)
+        public static void GlGetFloatv(uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr1 = &@params)
+            fixed (float* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetFloatv(pname, __arg1);
             }
         }
 
-        public static void GlGetIntegerv(uint pname, ref int @params)
+        public static void GlGetIntegerv(uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr1 = &@params)
+            fixed (int* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetIntegerv(pname, __arg1);
             }
         }
 
-        public static void GlGetLightfv(uint light, uint pname, ref float @params)
+        public static void GlGetLightfv(uint light, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetLightfv(light, pname, __arg2);
             }
         }
 
-        public static void GlGetLightiv(uint light, uint pname, ref int @params)
+        public static void GlGetLightiv(uint light, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetLightiv(light, pname, __arg2);
             }
         }
 
-        public static void GlGetMapdv(uint target, uint query, ref double v)
+        public static void GlGetMapdv(uint target, uint query, double[] v)
         {
-            fixed (double* __refParamPtr2 = &v)
+            fixed (double* __refParamPtr2 = v)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetMapdv(target, query, __arg2);
             }
         }
 
-        public static void GlGetMapfv(uint target, uint query, ref float v)
+        public static void GlGetMapfv(uint target, uint query, float[] v)
         {
-            fixed (float* __refParamPtr2 = &v)
+            fixed (float* __refParamPtr2 = v)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetMapfv(target, query, __arg2);
             }
         }
 
-        public static void GlGetMapiv(uint target, uint query, ref int v)
+        public static void GlGetMapiv(uint target, uint query, int[] v)
         {
-            fixed (int* __refParamPtr2 = &v)
+            fixed (int* __refParamPtr2 = v)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetMapiv(target, query, __arg2);
             }
         }
 
-        public static void GlGetMaterialfv(uint face, uint pname, ref float @params)
+        public static void GlGetMaterialfv(uint face, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetMaterialfv(face, pname, __arg2);
             }
         }
 
-        public static void GlGetMaterialiv(uint face, uint pname, ref int @params)
+        public static void GlGetMaterialiv(uint face, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetMaterialiv(face, pname, __arg2);
             }
         }
 
-        public static void GlGetPixelMapfv(uint map, ref float values)
+        public static void GlGetPixelMapfv(uint map, float[] values)
         {
-            fixed (float* __refParamPtr1 = &values)
+            fixed (float* __refParamPtr1 = values)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetPixelMapfv(map, __arg1);
             }
         }
 
-        public static void GlGetPixelMapuiv(uint map, ref uint values)
+        public static void GlGetPixelMapuiv(uint map, uint[] values)
         {
-            fixed (uint* __refParamPtr1 = &values)
+            fixed (uint* __refParamPtr1 = values)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetPixelMapuiv(map, __arg1);
             }
         }
 
-        public static void GlGetPixelMapusv(uint map, ref ushort values)
+        public static void GlGetPixelMapusv(uint map, ushort[] values)
         {
-            fixed (ushort* __refParamPtr1 = &values)
+            fixed (ushort* __refParamPtr1 = values)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlGetPixelMapusv(map, __arg1);
@@ -2489,45 +2489,45 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             return __ret;
         }
 
-        public static void GlGetTexEnvfv(uint target, uint pname, ref float @params)
+        public static void GlGetTexEnvfv(uint target, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexEnvfv(target, pname, __arg2);
             }
         }
 
-        public static void GlGetTexEnviv(uint target, uint pname, ref int @params)
+        public static void GlGetTexEnviv(uint target, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexEnviv(target, pname, __arg2);
             }
         }
 
-        public static void GlGetTexGendv(uint coord, uint pname, ref double @params)
+        public static void GlGetTexGendv(uint coord, uint pname, double[] @params)
         {
-            fixed (double* __refParamPtr2 = &@params)
+            fixed (double* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexGendv(coord, pname, __arg2);
             }
         }
 
-        public static void GlGetTexGenfv(uint coord, uint pname, ref float @params)
+        public static void GlGetTexGenfv(uint coord, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexGenfv(coord, pname, __arg2);
             }
         }
 
-        public static void GlGetTexGeniv(uint coord, uint pname, ref int @params)
+        public static void GlGetTexGeniv(uint coord, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexGeniv(coord, pname, __arg2);
@@ -2539,36 +2539,36 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlGetTexImage(target, level, format, type, pixels);
         }
 
-        public static void GlGetTexLevelParameterfv(uint target, int level, uint pname, ref float @params)
+        public static void GlGetTexLevelParameterfv(uint target, int level, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr3 = &@params)
+            fixed (float* __refParamPtr3 = @params)
             {
                 var __arg3 = __refParamPtr3;
                 __Internal.GlGetTexLevelParameterfv(target, level, pname, __arg3);
             }
         }
 
-        public static void GlGetTexLevelParameteriv(uint target, int level, uint pname, ref int @params)
+        public static void GlGetTexLevelParameteriv(uint target, int level, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr3 = &@params)
+            fixed (int* __refParamPtr3 = @params)
             {
                 var __arg3 = __refParamPtr3;
                 __Internal.GlGetTexLevelParameteriv(target, level, pname, __arg3);
             }
         }
 
-        public static void GlGetTexParameterfv(uint target, uint pname, ref float @params)
+        public static void GlGetTexParameterfv(uint target, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexParameterfv(target, pname, __arg2);
             }
         }
 
-        public static void GlGetTexParameteriv(uint target, uint pname, ref int @params)
+        public static void GlGetTexParameteriv(uint target, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlGetTexParameteriv(target, pname, __arg2);
@@ -2595,9 +2595,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlIndexd(c);
         }
 
-        public static void GlIndexdv(ref double c)
+        public static void GlIndexdv(double[] c)
         {
-            fixed (double* __refParamPtr0 = &c)
+            fixed (double* __refParamPtr0 = c)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlIndexdv(__arg0);
@@ -2609,9 +2609,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlIndexf(c);
         }
 
-        public static void GlIndexfv(ref float c)
+        public static void GlIndexfv(float[] c)
         {
-            fixed (float* __refParamPtr0 = &c)
+            fixed (float* __refParamPtr0 = c)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlIndexfv(__arg0);
@@ -2623,9 +2623,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlIndexi(c);
         }
 
-        public static void GlIndexiv(ref int c)
+        public static void GlIndexiv(int[] c)
         {
-            fixed (int* __refParamPtr0 = &c)
+            fixed (int* __refParamPtr0 = c)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlIndexiv(__arg0);
@@ -2637,9 +2637,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlIndexs(c);
         }
 
-        public static void GlIndexsv(ref short c)
+        public static void GlIndexsv(short[] c)
         {
-            fixed (short* __refParamPtr0 = &c)
+            fixed (short* __refParamPtr0 = c)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlIndexsv(__arg0);
@@ -2689,9 +2689,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLightModelf(pname, param);
         }
 
-        public static void GlLightModelfv(uint pname, ref float @params)
+        public static void GlLightModelfv(uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr1 = &@params)
+            fixed (float* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlLightModelfv(pname, __arg1);
@@ -2703,9 +2703,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLightModeli(pname, param);
         }
 
-        public static void GlLightModeliv(uint pname, ref int @params)
+        public static void GlLightModeliv(uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr1 = &@params)
+            fixed (int* __refParamPtr1 = @params)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlLightModeliv(pname, __arg1);
@@ -2717,9 +2717,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLightf(light, pname, param);
         }
 
-        public static void GlLightfv(uint light, uint pname, ref float @params)
+        public static void GlLightfv(uint light, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlLightfv(light, pname, __arg2);
@@ -2731,9 +2731,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLighti(light, pname, param);
         }
 
-        public static void GlLightiv(uint light, uint pname, ref int @params)
+        public static void GlLightiv(uint light, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlLightiv(light, pname, __arg2);
@@ -2760,18 +2760,18 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLoadIdentity();
         }
 
-        public static void GlLoadMatrixd(ref double m)
+        public static void GlLoadMatrixd(double[] m)
         {
-            fixed (double* __refParamPtr0 = &m)
+            fixed (double* __refParamPtr0 = m)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlLoadMatrixd(__arg0);
             }
         }
 
-        public static void GlLoadMatrixf(ref float m)
+        public static void GlLoadMatrixf(float[] m)
         {
-            fixed (float* __refParamPtr0 = &m)
+            fixed (float* __refParamPtr0 = m)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlLoadMatrixf(__arg0);
@@ -2788,36 +2788,36 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlLogicOp(opcode);
         }
 
-        public static void GlMap1d(uint target, double u1, double u2, int stride, int order, ref double points)
+        public static void GlMap1d(uint target, double u1, double u2, int stride, int order, double[] points)
         {
-            fixed (double* __refParamPtr5 = &points)
+            fixed (double* __refParamPtr5 = points)
             {
                 var __arg5 = __refParamPtr5;
                 __Internal.GlMap1d(target, u1, u2, stride, order, __arg5);
             }
         }
 
-        public static void GlMap1f(uint target, float u1, float u2, int stride, int order, ref float points)
+        public static void GlMap1f(uint target, float u1, float u2, int stride, int order, float[] points)
         {
-            fixed (float* __refParamPtr5 = &points)
+            fixed (float* __refParamPtr5 = points)
             {
                 var __arg5 = __refParamPtr5;
                 __Internal.GlMap1f(target, u1, u2, stride, order, __arg5);
             }
         }
 
-        public static void GlMap2d(uint target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, ref double points)
+        public static void GlMap2d(uint target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points)
         {
-            fixed (double* __refParamPtr9 = &points)
+            fixed (double* __refParamPtr9 = points)
             {
                 var __arg9 = __refParamPtr9;
                 __Internal.GlMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, __arg9);
             }
         }
 
-        public static void GlMap2f(uint target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, ref float points)
+        public static void GlMap2f(uint target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points)
         {
-            fixed (float* __refParamPtr9 = &points)
+            fixed (float* __refParamPtr9 = points)
             {
                 var __arg9 = __refParamPtr9;
                 __Internal.GlMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, __arg9);
@@ -2849,9 +2849,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlMaterialf(face, pname, param);
         }
 
-        public static void GlMaterialfv(uint face, uint pname, ref float @params)
+        public static void GlMaterialfv(uint face, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlMaterialfv(face, pname, __arg2);
@@ -2863,9 +2863,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlMateriali(face, pname, param);
         }
 
-        public static void GlMaterialiv(uint face, uint pname, ref int @params)
+        public static void GlMaterialiv(uint face, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlMaterialiv(face, pname, __arg2);
@@ -2877,18 +2877,18 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlMatrixMode(mode);
         }
 
-        public static void GlMultMatrixd(ref double m)
+        public static void GlMultMatrixd(double[] m)
         {
-            fixed (double* __refParamPtr0 = &m)
+            fixed (double* __refParamPtr0 = m)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlMultMatrixd(__arg0);
             }
         }
 
-        public static void GlMultMatrixf(ref float m)
+        public static void GlMultMatrixf(float[] m)
         {
-            fixed (float* __refParamPtr0 = &m)
+            fixed (float* __refParamPtr0 = m)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlMultMatrixf(__arg0);
@@ -2915,9 +2915,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlNormal3d(nx, ny, nz);
         }
 
-        public static void GlNormal3dv(ref double v)
+        public static void GlNormal3dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlNormal3dv(__arg0);
@@ -2929,9 +2929,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlNormal3f(nx, ny, nz);
         }
 
-        public static void GlNormal3fv(ref float v)
+        public static void GlNormal3fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlNormal3fv(__arg0);
@@ -2943,9 +2943,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlNormal3i(nx, ny, nz);
         }
 
-        public static void GlNormal3iv(ref int v)
+        public static void GlNormal3iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlNormal3iv(__arg0);
@@ -2957,9 +2957,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlNormal3s(nx, ny, nz);
         }
 
-        public static void GlNormal3sv(ref short v)
+        public static void GlNormal3sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlNormal3sv(__arg0);
@@ -2981,27 +2981,27 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlPassThrough(token);
         }
 
-        public static void GlPixelMapfv(uint map, int mapsize, ref float values)
+        public static void GlPixelMapfv(uint map, int mapsize, float[] values)
         {
-            fixed (float* __refParamPtr2 = &values)
+            fixed (float* __refParamPtr2 = values)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlPixelMapfv(map, mapsize, __arg2);
             }
         }
 
-        public static void GlPixelMapuiv(uint map, int mapsize, ref uint values)
+        public static void GlPixelMapuiv(uint map, int mapsize, uint[] values)
         {
-            fixed (uint* __refParamPtr2 = &values)
+            fixed (uint* __refParamPtr2 = values)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlPixelMapuiv(map, mapsize, __arg2);
             }
         }
 
-        public static void GlPixelMapusv(uint map, int mapsize, ref ushort values)
+        public static void GlPixelMapusv(uint map, int mapsize, ushort[] values)
         {
-            fixed (ushort* __refParamPtr2 = &values)
+            fixed (ushort* __refParamPtr2 = values)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlPixelMapusv(map, mapsize, __arg2);
@@ -3073,12 +3073,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlPopName();
         }
 
-        public static void GlPrioritizeTextures(int n, ref uint textures, ref float priorities)
+        public static void GlPrioritizeTextures(int n, uint[] textures, float[] priorities)
         {
-            fixed (uint* __refParamPtr1 = &textures)
+            fixed (uint* __refParamPtr1 = textures)
             {
                 var __arg1 = __refParamPtr1;
-                fixed (float* __refParamPtr2 = &priorities)
+                fixed (float* __refParamPtr2 = priorities)
                 {
                     var __arg2 = __refParamPtr2;
                     __Internal.GlPrioritizeTextures(n, __arg1, __arg2);
@@ -3111,9 +3111,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos2d(x, y);
         }
 
-        public static void GlRasterPos2dv(ref double v)
+        public static void GlRasterPos2dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos2dv(__arg0);
@@ -3125,9 +3125,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos2f(x, y);
         }
 
-        public static void GlRasterPos2fv(ref float v)
+        public static void GlRasterPos2fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos2fv(__arg0);
@@ -3139,9 +3139,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos2i(x, y);
         }
 
-        public static void GlRasterPos2iv(ref int v)
+        public static void GlRasterPos2iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos2iv(__arg0);
@@ -3153,9 +3153,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos2s(x, y);
         }
 
-        public static void GlRasterPos2sv(ref short v)
+        public static void GlRasterPos2sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos2sv(__arg0);
@@ -3167,9 +3167,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos3d(x, y, z);
         }
 
-        public static void GlRasterPos3dv(ref double v)
+        public static void GlRasterPos3dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos3dv(__arg0);
@@ -3181,9 +3181,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos3f(x, y, z);
         }
 
-        public static void GlRasterPos3fv(ref float v)
+        public static void GlRasterPos3fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos3fv(__arg0);
@@ -3195,9 +3195,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos3i(x, y, z);
         }
 
-        public static void GlRasterPos3iv(ref int v)
+        public static void GlRasterPos3iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos3iv(__arg0);
@@ -3209,9 +3209,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos3s(x, y, z);
         }
 
-        public static void GlRasterPos3sv(ref short v)
+        public static void GlRasterPos3sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos3sv(__arg0);
@@ -3223,9 +3223,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos4d(x, y, z, w);
         }
 
-        public static void GlRasterPos4dv(ref double v)
+        public static void GlRasterPos4dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos4dv(__arg0);
@@ -3237,9 +3237,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos4f(x, y, z, w);
         }
 
-        public static void GlRasterPos4fv(ref float v)
+        public static void GlRasterPos4fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos4fv(__arg0);
@@ -3251,9 +3251,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos4i(x, y, z, w);
         }
 
-        public static void GlRasterPos4iv(ref int v)
+        public static void GlRasterPos4iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos4iv(__arg0);
@@ -3265,9 +3265,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRasterPos4s(x, y, z, w);
         }
 
-        public static void GlRasterPos4sv(ref short v)
+        public static void GlRasterPos4sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlRasterPos4sv(__arg0);
@@ -3289,12 +3289,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRectd(x1, y1, x2, y2);
         }
 
-        public static void GlRectdv(ref double v1, ref double v2)
+        public static void GlRectdv(double[] v1, double[] v2)
         {
-            fixed (double* __refParamPtr0 = &v1)
+            fixed (double* __refParamPtr0 = v1)
             {
                 var __arg0 = __refParamPtr0;
-                fixed (double* __refParamPtr1 = &v2)
+                fixed (double* __refParamPtr1 = v2)
                 {
                     var __arg1 = __refParamPtr1;
                     __Internal.GlRectdv(__arg0, __arg1);
@@ -3307,12 +3307,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRectf(x1, y1, x2, y2);
         }
 
-        public static void GlRectfv(ref float v1, ref float v2)
+        public static void GlRectfv(float[] v1, float[] v2)
         {
-            fixed (float* __refParamPtr0 = &v1)
+            fixed (float* __refParamPtr0 = v1)
             {
                 var __arg0 = __refParamPtr0;
-                fixed (float* __refParamPtr1 = &v2)
+                fixed (float* __refParamPtr1 = v2)
                 {
                     var __arg1 = __refParamPtr1;
                     __Internal.GlRectfv(__arg0, __arg1);
@@ -3325,12 +3325,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRecti(x1, y1, x2, y2);
         }
 
-        public static void GlRectiv(ref int v1, ref int v2)
+        public static void GlRectiv(int[] v1, int[] v2)
         {
-            fixed (int* __refParamPtr0 = &v1)
+            fixed (int* __refParamPtr0 = v1)
             {
                 var __arg0 = __refParamPtr0;
-                fixed (int* __refParamPtr1 = &v2)
+                fixed (int* __refParamPtr1 = v2)
                 {
                     var __arg1 = __refParamPtr1;
                     __Internal.GlRectiv(__arg0, __arg1);
@@ -3343,12 +3343,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlRects(x1, y1, x2, y2);
         }
 
-        public static void GlRectsv(ref short v1, ref short v2)
+        public static void GlRectsv(short[] v1, short[] v2)
         {
-            fixed (short* __refParamPtr0 = &v1)
+            fixed (short* __refParamPtr0 = v1)
             {
                 var __arg0 = __refParamPtr0;
-                fixed (short* __refParamPtr1 = &v2)
+                fixed (short* __refParamPtr1 = v2)
                 {
                     var __arg1 = __refParamPtr1;
                     __Internal.GlRectsv(__arg0, __arg1);
@@ -3387,9 +3387,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlScissor(x, y, width, height);
         }
 
-        public static void GlSelectBuffer(int size, ref uint buffer)
+        public static void GlSelectBuffer(int size, uint[] buffer)
         {
-            fixed (uint* __refParamPtr1 = &buffer)
+            fixed (uint* __refParamPtr1 = buffer)
             {
                 var __arg1 = __refParamPtr1;
                 __Internal.GlSelectBuffer(size, __arg1);
@@ -3421,9 +3421,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord1d(s);
         }
 
-        public static void GlTexCoord1dv(ref double v)
+        public static void GlTexCoord1dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord1dv(__arg0);
@@ -3435,9 +3435,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord1f(s);
         }
 
-        public static void GlTexCoord1fv(ref float v)
+        public static void GlTexCoord1fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord1fv(__arg0);
@@ -3449,9 +3449,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord1i(s);
         }
 
-        public static void GlTexCoord1iv(ref int v)
+        public static void GlTexCoord1iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord1iv(__arg0);
@@ -3463,9 +3463,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord1s(s);
         }
 
-        public static void GlTexCoord1sv(ref short v)
+        public static void GlTexCoord1sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord1sv(__arg0);
@@ -3477,9 +3477,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord2d(s, t);
         }
 
-        public static void GlTexCoord2dv(ref double v)
+        public static void GlTexCoord2dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord2dv(__arg0);
@@ -3491,9 +3491,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord2f(s, t);
         }
 
-        public static void GlTexCoord2fv(ref float v)
+        public static void GlTexCoord2fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord2fv(__arg0);
@@ -3505,9 +3505,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord2i(s, t);
         }
 
-        public static void GlTexCoord2iv(ref int v)
+        public static void GlTexCoord2iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord2iv(__arg0);
@@ -3519,9 +3519,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord2s(s, t);
         }
 
-        public static void GlTexCoord2sv(ref short v)
+        public static void GlTexCoord2sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord2sv(__arg0);
@@ -3533,9 +3533,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord3d(s, t, r);
         }
 
-        public static void GlTexCoord3dv(ref double v)
+        public static void GlTexCoord3dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord3dv(__arg0);
@@ -3547,9 +3547,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord3f(s, t, r);
         }
 
-        public static void GlTexCoord3fv(ref float v)
+        public static void GlTexCoord3fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord3fv(__arg0);
@@ -3561,9 +3561,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord3i(s, t, r);
         }
 
-        public static void GlTexCoord3iv(ref int v)
+        public static void GlTexCoord3iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord3iv(__arg0);
@@ -3575,9 +3575,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord3s(s, t, r);
         }
 
-        public static void GlTexCoord3sv(ref short v)
+        public static void GlTexCoord3sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord3sv(__arg0);
@@ -3589,9 +3589,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord4d(s, t, r, q);
         }
 
-        public static void GlTexCoord4dv(ref double v)
+        public static void GlTexCoord4dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord4dv(__arg0);
@@ -3603,9 +3603,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord4f(s, t, r, q);
         }
 
-        public static void GlTexCoord4fv(ref float v)
+        public static void GlTexCoord4fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord4fv(__arg0);
@@ -3617,9 +3617,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord4i(s, t, r, q);
         }
 
-        public static void GlTexCoord4iv(ref int v)
+        public static void GlTexCoord4iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord4iv(__arg0);
@@ -3631,9 +3631,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexCoord4s(s, t, r, q);
         }
 
-        public static void GlTexCoord4sv(ref short v)
+        public static void GlTexCoord4sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlTexCoord4sv(__arg0);
@@ -3650,9 +3650,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexEnvf(target, pname, param);
         }
 
-        public static void GlTexEnvfv(uint target, uint pname, ref float @params)
+        public static void GlTexEnvfv(uint target, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexEnvfv(target, pname, __arg2);
@@ -3664,9 +3664,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexEnvi(target, pname, param);
         }
 
-        public static void GlTexEnviv(uint target, uint pname, ref int @params)
+        public static void GlTexEnviv(uint target, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexEnviv(target, pname, __arg2);
@@ -3678,9 +3678,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexGend(coord, pname, param);
         }
 
-        public static void GlTexGendv(uint coord, uint pname, ref double @params)
+        public static void GlTexGendv(uint coord, uint pname, double[] @params)
         {
-            fixed (double* __refParamPtr2 = &@params)
+            fixed (double* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexGendv(coord, pname, __arg2);
@@ -3692,9 +3692,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexGenf(coord, pname, param);
         }
 
-        public static void GlTexGenfv(uint coord, uint pname, ref float @params)
+        public static void GlTexGenfv(uint coord, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexGenfv(coord, pname, __arg2);
@@ -3706,9 +3706,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexGeni(coord, pname, param);
         }
 
-        public static void GlTexGeniv(uint coord, uint pname, ref int @params)
+        public static void GlTexGeniv(uint coord, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexGeniv(coord, pname, __arg2);
@@ -3730,9 +3730,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexParameterf(target, pname, param);
         }
 
-        public static void GlTexParameterfv(uint target, uint pname, ref float @params)
+        public static void GlTexParameterfv(uint target, uint pname, float[] @params)
         {
-            fixed (float* __refParamPtr2 = &@params)
+            fixed (float* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexParameterfv(target, pname, __arg2);
@@ -3744,9 +3744,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlTexParameteri(target, pname, param);
         }
 
-        public static void GlTexParameteriv(uint target, uint pname, ref int @params)
+        public static void GlTexParameteriv(uint target, uint pname, int[] @params)
         {
-            fixed (int* __refParamPtr2 = &@params)
+            fixed (int* __refParamPtr2 = @params)
             {
                 var __arg2 = __refParamPtr2;
                 __Internal.GlTexParameteriv(target, pname, __arg2);
@@ -3778,9 +3778,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex2d(x, y);
         }
 
-        public static void GlVertex2dv(ref double v)
+        public static void GlVertex2dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex2dv(__arg0);
@@ -3792,9 +3792,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex2f(x, y);
         }
 
-        public static void GlVertex2fv(ref float v)
+        public static void GlVertex2fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex2fv(__arg0);
@@ -3806,9 +3806,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex2i(x, y);
         }
 
-        public static void GlVertex2iv(ref int v)
+        public static void GlVertex2iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex2iv(__arg0);
@@ -3820,9 +3820,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex2s(x, y);
         }
 
-        public static void GlVertex2sv(ref short v)
+        public static void GlVertex2sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex2sv(__arg0);
@@ -3834,9 +3834,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex3d(x, y, z);
         }
 
-        public static void GlVertex3dv(ref double v)
+        public static void GlVertex3dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex3dv(__arg0);
@@ -3848,9 +3848,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex3f(x, y, z);
         }
 
-        public static void GlVertex3fv(ref float v)
+        public static void GlVertex3fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex3fv(__arg0);
@@ -3862,9 +3862,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex3i(x, y, z);
         }
 
-        public static void GlVertex3iv(ref int v)
+        public static void GlVertex3iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex3iv(__arg0);
@@ -3876,9 +3876,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex3s(x, y, z);
         }
 
-        public static void GlVertex3sv(ref short v)
+        public static void GlVertex3sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex3sv(__arg0);
@@ -3890,9 +3890,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex4d(x, y, z, w);
         }
 
-        public static void GlVertex4dv(ref double v)
+        public static void GlVertex4dv(double[] v)
         {
-            fixed (double* __refParamPtr0 = &v)
+            fixed (double* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex4dv(__arg0);
@@ -3904,9 +3904,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex4f(x, y, z, w);
         }
 
-        public static void GlVertex4fv(ref float v)
+        public static void GlVertex4fv(float[] v)
         {
-            fixed (float* __refParamPtr0 = &v)
+            fixed (float* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex4fv(__arg0);
@@ -3918,9 +3918,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex4i(x, y, z, w);
         }
 
-        public static void GlVertex4iv(ref int v)
+        public static void GlVertex4iv(int[] v)
         {
-            fixed (int* __refParamPtr0 = &v)
+            fixed (int* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex4iv(__arg0);
@@ -3932,9 +3932,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop
             __Internal.GlVertex4s(x, y, z, w);
         }
 
-        public static void GlVertex4sv(ref short v)
+        public static void GlVertex4sv(short[] v)
         {
-            fixed (short* __refParamPtr0 = &v)
+            fixed (short* __refParamPtr0 = v)
             {
                 var __arg0 = __refParamPtr0;
                 __Internal.GlVertex4sv(__arg0);
