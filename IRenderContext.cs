@@ -6,6 +6,10 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore {
             get;
         }
 
+        InputSource Input {
+            get;
+        }
+
         event Action ShuttingDown;
 
         event Action Frame;

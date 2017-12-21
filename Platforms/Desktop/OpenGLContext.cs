@@ -5,6 +5,11 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
     internal class OpenGLContext : IOpenGLContext, IRenderContextInternal {
         public ApplicationType Type => ApplicationType.OpenGL;
 
+        public InputSource Input {
+            get;
+            private set;
+        }
+
         public event Action ShuttingDown;
 
         public event Action Frame;
@@ -12,7 +17,6 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         GLFWwindow Window;
 
         public void Start() {
-            GLFW.GlfwMakeContextCurrent(Window);
             int width = 0;
             int height = 0;
             GLFW.GlfwGetFramebufferSize(Window, ref width, ref height);
@@ -20,28 +24,179 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             while (GLFW.GlfwWindowShouldClose(Window) == 0) {
                 Frame?.Invoke();
                 GLFW.GlfwSwapBuffers(Window);
+                GLFW.GlfwPollEvents();
             }
             ShuttingDown?.Invoke();
+            GLFW.GlfwDestroyWindow(Window);
+            GLFW.GlfwTerminate();
+        }
+
+#region GLFW Enum Conversions
+        bool ConvertMouseButton(int id, out MouseButton btn) {
+            if (id >= 0 && id < 8) {
+                btn = (MouseButton) (id + 1);
+                return true;
+            } else {
+                btn = default(MouseButton);
+                return false;
+            }
+        }
+
+        bool ConvertKeyModifiers(int id, out KeyModifiers mods) {
+            mods = (KeyModifiers) (id & 0x0F);
+            return true;
+        }
+
+        bool ConvertKey(int id, out Key key) {
+            if (id < 0) {
+                key = default(Key);
+                return false;
+            } else if (id < 128) {
+                key = (Key) id;
+                return true;
+            } else if ((id >= 256 && id <= 269) || (id >= 280 && id <= 284) || (id >= 290 && id <= 314) || (id >= 320 && id <= 336) || (id >= 340 && id <= 348)) {
+                key = (Key) id;
+                return true;
+            } else {
+                key = default(Key);
+                return false;
+            }
+        }
+#endregion
+
+#region GLFW Callbacks
+        void KeyCallback(IntPtr win, int keyId, int scancode, int action, int modsId) {
+            Key key;
+            KeyModifiers mods;
+            if (ConvertKey(keyId, out key) && ConvertKeyModifiers(modsId, out mods)) {
+                switch (action) {
+                    case 0:
+                        Input.Keyboard.OnRelease(key, mods);
+                        break;
+                    case 1:
+                        Input.Keyboard.OnPress(key, mods);
+                        break;
+                    case 2:
+                        Input.Keyboard.OnRepeat(key, mods);
+                        break;
+                }
+            }
+        }
+
+        void CharCallback(IntPtr win, uint codepoint) {
+            Input.Keyboard.OnType((char) codepoint, KeyModifiers.None);
         }
 
         void ErrorCallback(int code, string description) {
             Console.Error.WriteLine("GLFW failed with error code {0}: {1}.", code, description);
         }
 
+        void ScrollCallback(IntPtr win, double xoffset, double yoffset) {
+            Input.Mouse.OnScroll(xoffset, yoffset);
+        }
+
+        void CharModsCallback(IntPtr win, uint codepoint, int modsId) {
+            KeyModifiers mods;
+            if (ConvertKeyModifiers(modsId, out mods) && mods != KeyModifiers.None) {
+                Input.Keyboard.OnType((char) codepoint, mods);
+            }
+        }
+
+        void CursorPosCallback(IntPtr win, double xpos, double ypos) {
+            Input.Mouse.OnMove(xpos, ypos);
+        }
+
+        void WindowPosCallback(IntPtr win, int xpos, int ypos) {
+            Input.Window.OnMove(xpos, ypos);
+        }
+
+        void WindowSizeCallback(IntPtr win, int width, int height) {
+            Input.Window.OnResize(width, height);
+        }
+
+        void CursorEnterCallback(IntPtr win, int entered) {
+            switch (entered) {
+                case 0:
+                    Input.Mouse.OnLeave();
+                    break;
+                case 1:
+                    Input.Mouse.OnEnter();
+                    break;
+            }
+        }
+
+        void MouseButtonCallback(IntPtr win, int buttonId, int action, int modsId) {
+            MouseButton btn;
+            KeyModifiers mods;
+            if (ConvertMouseButton(buttonId, out btn) && ConvertKeyModifiers(modsId, out mods)) {
+                switch (action) {
+                    case 0:
+                        Input.Mouse.OnRelease(btn, mods);
+                        break;
+                    case 1:
+                        Input.Mouse.OnClick(btn, mods);
+                        break;
+                }
+            }
+        }
+
+        void WindowFocusCallback(IntPtr win, int focused) {
+            switch (focused) {
+                case 0:
+                    Input.Window.OnBlur();
+                    break;
+                case 1:
+                    Input.Window.OnFocus();
+                    break;
+            }
+        }
+
+        void WindowIconifyCallback(IntPtr win, int iconified) {
+            switch (iconified) {
+                case 0:
+                    Input.Window.OnRestore();
+                    break;
+                case 1:
+                    Input.Window.OnIconify();
+                    break;
+            }
+        }
+
+        void FrameBufferSizeCallback(IntPtr win, int width, int height) {
+            Viewport(0, 0, width, height);
+            Input.Window.OnViewportReisze(width, height);
+        }
+#endregion
+
         internal OpenGLContext(string name) {
             if (GLFW.GlfwInit() == 0) {
                 Console.Error.WriteLine("GLFW failed to initialize!");
                 Environment.Exit(1);
             }
-            GLFW.GlfwSetErrorCallback(ErrorCallback);
             Window = GLFW.GlfwCreateWindow(1920, 1080, name, null, null);
             if (Window == null) {
                 Console.Error.WriteLine("GLFW failed to open window!");
                 GLFW.GlfwTerminate();
                 Environment.Exit(1);
             }
+            Input = new InputSource();
+            GLFW.GlfwMakeContextCurrent(Window);
+            GLFW.GlfwSetKeyCallback(Window, KeyCallback);
+            GLFW.GlfwSetCharCallback(Window, CharCallback);
+            GLFW.GlfwSetErrorCallback(ErrorCallback);
+            GLFW.GlfwSetScrollCallback(Window, ScrollCallback);
+            GLFW.GlfwSetCharModsCallback(Window, CharModsCallback);
+            GLFW.GlfwSetCursorPosCallback(Window, CursorPosCallback);
+            GLFW.GlfwSetWindowPosCallback(Window, WindowPosCallback);
+            GLFW.GlfwSetWindowSizeCallback(Window, WindowSizeCallback);
+            GLFW.GlfwSetCursorEnterCallback(Window, CursorEnterCallback);
+            GLFW.GlfwSetMouseButtonCallback(Window, MouseButtonCallback);
+            GLFW.GlfwSetWindowFocusCallback(Window, WindowFocusCallback);
+            GLFW.GlfwSetWindowIconifyCallback(Window, WindowIconifyCallback);
+            GLFW.GlfwSetFramebufferSizeCallback(Window, FrameBufferSizeCallback);
         }
 
+        #region OpenGL Calls
         public void Accum(uint op, float value) {
             OpenGL.GlAccum(op, value);
         }
@@ -1427,5 +1582,6 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 OpenGL.GlPolygonStipple(pMask);
             }
         }
+#endregion
     }
 }
