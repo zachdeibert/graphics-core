@@ -17,8 +17,8 @@ namespace Examples.Cube {
             Axis[2] += RandomFloat() / 4;
             NormalizeAxis();
 
-            Gl.Clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
-            Gl.Begin(GL.TRIANGLES);
+            Gl.Clear(GlClearBufferMask.ColorBufferBit | GlClearBufferMask.DepthBufferBit);
+            Gl.Begin(GlPrimitiveType.Triangles);
 
             Gl.Color3f(1, 0, 0);
             Gl.Vertex3f(1, 1, 1);
@@ -91,11 +91,11 @@ namespace Examples.Cube {
         public void Start(IRenderContext ctx) {
             Gl = (IOpenGLContext) ctx;
             Gl.Frame += Render;
-            Gl.Enable(GL.DEPTH_TEST);
-            Gl.DepthFunc(GL.LEQUAL);
-            Gl.MatrixMode(GL.PROJECTION);
+            Gl.Enable(GlEnableCap.DepthTest);
+            Gl.DepthFunc(GlDepthFunction.Lequal);
+            Gl.MatrixMode(GlMatrixMode.Projection);
             SetPerspective(Math.PI / 2, 16.0 / 9.0, 1, 7);
-            Gl.MatrixMode(GL.MODELVIEW);
+            Gl.MatrixMode(GlMatrixMode.Modelview);
             Gl.Translatef(0, 0, -4);
             Axis = new float[3];
             Random = new Random();

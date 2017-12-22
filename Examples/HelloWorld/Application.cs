@@ -25,8 +25,8 @@ namespace Examples.HelloWorld {
                 ++ColorOffset;
             }
 
-            Gl.Clear(GL.COLOR_BUFFER_BIT);
-            Gl.Begin(GL.TRIANGLES);
+            Gl.Clear(GlClearBufferMask.ColorBufferBit);
+            Gl.Begin(GlPrimitiveType.Triangles);
 
             Gl.Color3f(0.5f, 0.5f, 0.5f);
             Gl.Vertex2f(0, 0);

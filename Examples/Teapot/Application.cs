@@ -192,9 +192,9 @@ namespace Examples.Teapot {
             Axis[1] += RandomDouble() / 4;
             Axis[2] += RandomDouble() / 4;
             NormalizeAxis();
-            Gl.Clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            Gl.Clear(GlClearBufferMask.ColorBufferBit | GlClearBufferMask.DepthBufferBit);
             Gl.Color3f(1, 1, 1);
-            Gl.Begin(GL.TRIANGLES);
+            Gl.Begin(GlPrimitiveType.Triangles);
             for (int i = 0; i < TeapotPatches.GetLength(0); ++i) {
                 double fu;
                 for (double u = 0; u < 1; u = fu) {
@@ -288,11 +288,11 @@ namespace Examples.Teapot {
         public void Start(IRenderContext ctx) {
             Gl = (IOpenGLContext) ctx;
             Gl.Frame += Render;
-            Gl.Enable(GL.DEPTH_TEST);
-            Gl.DepthFunc(GL.LEQUAL);
-            Gl.MatrixMode(GL.PROJECTION);
+            Gl.Enable(GlEnableCap.DepthTest);
+            Gl.DepthFunc(GlDepthFunction.Lequal);
+            Gl.MatrixMode(GlMatrixMode.Projection);
             SetPerspective(Math.PI / 2, 16.0 / 9.0, 1, 10);
-            Gl.MatrixMode(GL.MODELVIEW);
+            Gl.MatrixMode(GlMatrixMode.Modelview);
             Gl.Translated(0, 0, -CameraDistance);
             Axis = new double[3];
             Random = new Random();
