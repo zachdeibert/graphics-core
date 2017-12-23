@@ -23,6 +23,6 @@
         </None>
     </ItemGroup>
     <Target Name="RunDesktop" DependsOnTargets="Build">
-        <Exec Command="dotnet $(OutputPath)/GraphicsCore.Platforms.Desktop.dll" WorkingDirectory="$(OutputPath)" />
+        <Exec Command="dotnet GraphicsCore.Platforms.Desktop.dll" WorkingDirectory="$(OutputPath)" />
     </Target>
 </Project>
