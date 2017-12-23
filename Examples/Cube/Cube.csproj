@@ -5,5 +5,6 @@
     <PropertyGroup>
         <AssemblyName>GraphicsCore.Application</AssemblyName>
         <TargetFramework>netstandard1.5</TargetFramework>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 </Project>

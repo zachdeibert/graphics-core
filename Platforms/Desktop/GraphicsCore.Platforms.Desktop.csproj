@@ -9,9 +9,18 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.0</TargetFramework>
+        <Title>Graphics Core (Desktop Platform)</Title>
+        <Authors>Zach Deibert</Authors>
+        <Description>A library that allows graphical applications to be written in dotnet core</Description>
+        <Copyright>Copyright (c) 2017 Zach Deibert.  All rights reserved.</Copyright>
+        <PackageLicenseUrl>https://github.com/zachdeibert/graphics-core/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/zachdeibert/graphics-core</PackageProjectUrl>
+        <PackageTags>Graphics OpenGL</PackageTags>
+        <RepositoryUrl>https://github.com/zachdeibert/graphics-core</RepositoryUrl>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     </ItemGroup>
     <Import Project="Libraries\GLFW\GLFW.targets" />
+    <Import Project="..\..\Version.props" />
 </Project>

@@ -1,6 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard1.5</TargetFramework>
+        <TargetFrameworks>netstandard1.5</TargetFrameworks>
+        <Title>Graphics Core</Title>
+        <Authors>Zach Deibert</Authors>
+        <Description>A library that allows graphical applications to be written in dotnet core</Description>
+        <Copyright>Copyright (c) 2017 Zach Deibert.  All rights reserved.</Copyright>
+        <PackageLicenseUrl>https://github.com/zachdeibert/graphics-core/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/zachdeibert/graphics-core</PackageProjectUrl>
+        <PackageTags>Graphics OpenGL</PackageTags>
+        <RepositoryUrl>https://github.com/zachdeibert/graphics-core</RepositoryUrl>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="Examples\**" />
@@ -8,4 +16,5 @@
         <Compile Remove="Platforms\**" />
         <Compile Remove="Stub\**" />
     </ItemGroup>
+    <Import Project="Version.props" />
 </Project>
