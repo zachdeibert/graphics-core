@@ -1,8 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <Compile Remove="Generator\**" />
-        <Content Include="$(OutputPath)\netstandard1.5\$(AssemblyName).dll" Condition="Exists('$(OutputPath)\netstandard1.5\$(AssemblyName).dll')">
-            <PackagePath>content</PackagePath>
+        <Content Include="$(OutputPath)\netcoreapp2.0\$(AssemblyName).dll" Condition="Exists('$(OutputPath)\netcoreapp2.0\$(AssemblyName).dll')">
+            <PackagePath>build</PackagePath>
+        </Content>
+        <Content Include="$(OutputPath)\netcoreapp2.0\$(AssemblyName).runtimeconfig.json" Condition="Exists('$(OutputPath)\netcoreapp2.0\$(AssemblyName).runtimeconfig.json')">
+            <PackagePath>build</PackagePath>
+        </Content>
+        <Content Include="GraphicsCore.Platforms.Desktop.targets">
+            <PackagePath>build</PackagePath>
         </Content>
     </ItemGroup>
     <PropertyGroup>

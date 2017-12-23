@@ -15,6 +15,12 @@
         <Compile Remove="Interface\**" />
         <Compile Remove="Platforms\**" />
         <Compile Remove="Stub\**" />
+        <Content Include="GraphicsCore.props">
+            <PackagePath>build</PackagePath>
+        </Content>
+        <Content Include="GraphicsCore.targets">
+            <PackagePath>build</PackagePath>
+        </Content>
     </ItemGroup>
     <Import Project="Version.props" />
 </Project>

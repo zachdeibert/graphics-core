@@ -27,13 +27,13 @@
     </Target>
     <ItemGroup>
         <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.so.3')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.so.3">
-            <PackagePath>content</PackagePath>
+            <PackagePath>build</PackagePath>
         </Content>
         <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib">
-            <PackagePath>content</PackagePath>
+            <PackagePath>build</PackagePath>
         </Content>
         <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw3.dll')" Include="$(MSBuildThisFileDirectory)/bin/glfw3.dll">
-            <PackagePath>content</PackagePath>
+            <PackagePath>build</PackagePath>
         </Content>
     </ItemGroup>
 </Project>
