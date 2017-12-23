@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <Compile Remove="Generator\**" />
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\..\GraphicsCore.csproj" />
+        <Content Include="$(OutputPath)\netstandard1.5\$(AssemblyName).dll" Condition="Exists('$(OutputPath)\netstandard1.5\$(AssemblyName).dll')">
+            <PackagePath>content</PackagePath>
+        </Content>
     </ItemGroup>
     <PropertyGroup>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <OutputType>Winexe</OutputType>
+        <TargetFrameworks>netstandard1.5;netcoreapp2.0</TargetFrameworks>
         <Title>Graphics Core (Desktop Platform)</Title>
         <Authors>Zach Deibert</Authors>
         <Description>A library that allows graphical applications to be written in dotnet core</Description>
@@ -17,8 +17,11 @@
         <PackageProjectUrl>https://github.com/zachdeibert/graphics-core</PackageProjectUrl>
         <PackageTags>Graphics OpenGL</PackageTags>
         <RepositoryUrl>https://github.com/zachdeibert/graphics-core</RepositoryUrl>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\GraphicsCore.csproj" />
         <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
     </ItemGroup>
     <Import Project="Libraries\GLFW\GLFW.targets" />
