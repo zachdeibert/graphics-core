@@ -25,4 +25,15 @@
             </ResolvedFileToPublish>
         </ItemGroup>
     </Target>
+    <ItemGroup>
+        <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.so.3')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.so.3">
+            <PackagePath>lib\$(TargetFramework)</PackagePath>
+        </Content>
+        <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib')" Include="$(MSBuildThisFileDirectory)/bin/libglfw.3.dylib">
+            <PackagePath>lib\$(TargetFramework)</PackagePath>
+        </Content>
+        <Content Condition="Exists('$(MSBuildThisFileDirectory)/bin/glfw3.dll')" Include="$(MSBuildThisFileDirectory)/bin/glfw3.dll">
+            <PackagePath>lib\$(TargetFramework)</PackagePath>
+        </Content>
+    </ItemGroup>
 </Project>
