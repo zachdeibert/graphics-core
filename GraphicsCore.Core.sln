@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{88A9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsCore.Platforms.Desktop.Generator", "Platforms\Desktop\Generator\GraphicsCore.Platforms.Desktop.Generator.csproj", "{381BAF90-7891-4116-9FEA-1E9D15876C9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromNuGet", "Examples\FromNuGet\FromNuGet.csproj", "{65014AA5-7881-4C02-9956-39CB6D4F7E13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
@@ -172,6 +174,18 @@ Global
 		{381BAF90-7891-4116-9FEA-1E9D15876C9D}.Release|x64.Build.0 = Release|x64
 		{381BAF90-7891-4116-9FEA-1E9D15876C9D}.Release|x86.ActiveCfg = Release|x86
 		{381BAF90-7891-4116-9FEA-1E9D15876C9D}.Release|x86.Build.0 = Release|x86
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|x64.ActiveCfg = Debug|x64
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|x64.Build.0 = Debug|x64
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|x86.ActiveCfg = Debug|x86
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Debug|x86.Build.0 = Debug|x86
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|x64.ActiveCfg = Release|x64
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|x64.Build.0 = Release|x64
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|x86.ActiveCfg = Release|x86
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,5 +197,6 @@ Global
 		{46288988-B037-4A2C-8FA0-BACDE51CA640} = {B7AF16A4-F5EA-4830-B54F-48C80E02F0AE}
 		{88A973AA-F7D1-4976-AF3A-084B054593EE} = {2941B783-E44E-44CC-805A-4B165692016B}
 		{381BAF90-7891-4116-9FEA-1E9D15876C9D} = {88A973AA-F7D1-4976-AF3A-084B054593EE}
+		{65014AA5-7881-4C02-9956-39CB6D4F7E13} = {B7AF16A4-F5EA-4830-B54F-48C80E02F0AE}
 	EndGlobalSection
 EndGlobal
