@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\..\GraphicsCore.csproj" />
+    </ItemGroup>
+    <PropertyGroup>
+        <AssemblyName>GraphicsCore.Application</AssemblyName>
+        <TargetFramework>netstandard1.5</TargetFramework>
+    </PropertyGroup>
+</Project>

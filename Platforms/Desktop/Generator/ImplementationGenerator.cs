@@ -38,8 +38,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop.Generator {
             }
             ImplementMethod(code, errors, binding, i + 1, string.Concat(indent, "        "));
             code.AppendFormat("{0}    {1}", indent, '}');
-            foreach (string fixedLocal in fixedLocals) {
-                code.AppendFormat(", {0}", fixedLocal);
+            if (fixedLocals.Count == 0) {
+                code.Append(", new void *[0]");
+            } else {
+                foreach (string fixedLocal in fixedLocals) {
+                    code.AppendFormat(", {0}", fixedLocal);
+                }
             }
             code.AppendLine(");");
             code.AppendFormat("{0}{1} finally {2}", indent, '}', '{');
@@ -60,18 +64,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop.Generator {
                 } else if (param.CSType.ParameterType.EndsWith("[][]")) {
                     ImplementDoubleArrayMethod(code, errors, binding, i, indent, param.Name, param.CSType.ParameterType.Substring(0, param.CSType.ParameterType.Length - 4), param);
                 } else if (param.CSType.ParameterType.EndsWith("[]")) {
-                    if (param.CSType.ParameterType == "string[]") {
-                        code.AppendFormat("{0}char[][] chars_{1} = @{1}.Select(s => s.ToCharArray()).ToArray();", indent, param.Name);
-                        code.AppendLine();
-                        ImplementDoubleArrayMethod(code, errors, binding, i, indent, string.Concat("chars_", param.Name), "char", param);
-                    } else {
-                        code.AppendFormat("{0}fixed ({1} *ptr_{2} = @{2}) {3}", indent, param.CSType.ParameterType.Substring(0, param.CSType.ParameterType.Length - 2), param.Name, '{');
-                        code.AppendLine();
-                        param.Name = string.Concat("ptr_", param.Name);
-                        ImplementMethod(code, errors, binding, i + 1, string.Concat(indent, "    "));
-                        code.Append(indent);
-                        code.AppendLine("}");
-                    }
+                    code.AppendFormat("{0}fixed ({1} *ptr_{2} = @{2}) {3}", indent, param.CSType.ParameterType.Substring(0, param.CSType.ParameterType.Length - 2), param.Name, '{');
+                    code.AppendLine();
+                    param.Name = string.Concat("ptr_", param.Name);
+                    ImplementMethod(code, errors, binding, i + 1, string.Concat(indent, "    "));
+                    code.Append(indent);
+                    code.AppendLine("}");
                 } else {
                     ImplementMethod(code, errors, binding, i + 1, indent);
                 }

@@ -61,10 +61,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glActiveVaryingNV")]
-        static extern void Native_ActiveVaryingNV(uint @program, string @name);
+        static extern void Native_ActiveVaryingNV(uint @program, byte* @name);
 
-        public void ActiveVaryingNV(uint @program, string @name) {
-            Native_ActiveVaryingNV(@program, @name);
+        public void ActiveVaryingNV(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_ActiveVaryingNV(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glAlphaFragmentOp1ATI")]
@@ -339,17 +341,21 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindAttribLocation")]
-        static extern void Native_BindAttribLocation(uint @program, uint @index, string @name);
+        static extern void Native_BindAttribLocation(uint @program, uint @index, byte* @name);
 
-        public void BindAttribLocation(uint @program, uint @index, string @name) {
-            Native_BindAttribLocation(@program, @index, @name);
+        public void BindAttribLocation(uint @program, uint @index, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindAttribLocation(@program, @index, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindAttribLocationARB")]
-        static extern void Native_BindAttribLocationARB(IntPtr @programObj, uint @index, string @name);
+        static extern void Native_BindAttribLocationARB(IntPtr @programObj, uint @index, byte* @name);
 
-        public void BindAttribLocationARB(IntPtr @programObj, uint @index, string @name) {
-            Native_BindAttribLocationARB(@programObj, @index, @name);
+        public void BindAttribLocationARB(IntPtr @programObj, uint @index, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindAttribLocationARB(@programObj, @index, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindBuffer")]
@@ -445,31 +451,39 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindFragDataLocation")]
-        static extern void Native_BindFragDataLocation(uint @program, uint @color, string @name);
+        static extern void Native_BindFragDataLocation(uint @program, uint @color, byte* @name);
 
-        public void BindFragDataLocation(uint @program, uint @color, string @name) {
-            Native_BindFragDataLocation(@program, @color, @name);
+        public void BindFragDataLocation(uint @program, uint @color, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindFragDataLocation(@program, @color, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindFragDataLocationEXT")]
-        static extern void Native_BindFragDataLocationEXT(uint @program, uint @color, string @name);
+        static extern void Native_BindFragDataLocationEXT(uint @program, uint @color, byte* @name);
 
-        public void BindFragDataLocationEXT(uint @program, uint @color, string @name) {
-            Native_BindFragDataLocationEXT(@program, @color, @name);
+        public void BindFragDataLocationEXT(uint @program, uint @color, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindFragDataLocationEXT(@program, @color, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindFragDataLocationIndexed")]
-        static extern void Native_BindFragDataLocationIndexed(uint @program, uint @colorNumber, uint @index, string @name);
+        static extern void Native_BindFragDataLocationIndexed(uint @program, uint @colorNumber, uint @index, byte* @name);
 
-        public void BindFragDataLocationIndexed(uint @program, uint @colorNumber, uint @index, string @name) {
-            Native_BindFragDataLocationIndexed(@program, @colorNumber, @index, @name);
+        public void BindFragDataLocationIndexed(uint @program, uint @colorNumber, uint @index, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindFragDataLocationIndexed(@program, @colorNumber, @index, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindFragDataLocationIndexedEXT")]
-        static extern void Native_BindFragDataLocationIndexedEXT(uint @program, uint @colorNumber, uint @index, string @name);
+        static extern void Native_BindFragDataLocationIndexedEXT(uint @program, uint @colorNumber, uint @index, byte* @name);
 
-        public void BindFragDataLocationIndexedEXT(uint @program, uint @colorNumber, uint @index, string @name) {
-            Native_BindFragDataLocationIndexedEXT(@program, @colorNumber, @index, @name);
+        public void BindFragDataLocationIndexedEXT(uint @program, uint @colorNumber, uint @index, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_BindFragDataLocationIndexedEXT(@program, @colorNumber, @index, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glBindFragmentShaderATI")]
@@ -2234,7 +2248,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_ColorPointerListIBM(@size, @type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -2248,7 +2262,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_ColorPointervINTEL(@size, @type, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -2419,19 +2433,18 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glCompileShaderIncludeARB")]
-        static extern void Native_CompileShaderIncludeARB(uint @shader, int @count, char** @path, int* @length);
+        static extern void Native_CompileShaderIncludeARB(uint @shader, int @count, byte** @path, int* @length);
 
-        public void CompileShaderIncludeARB(uint @shader, int @count, string[] @path, int[] @length) {
-            char[][] chars_path = @path.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_path = Marshal.AllocHGlobal(@chars_path.Length * sizeof(void *));
+        public void CompileShaderIncludeARB(uint @shader, int @count, byte[][] @path, int[] @length) {
+            IntPtr ptr_path = Marshal.AllocHGlobal(@path.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_path, @chars_path, (void **) ptr_chars_path.ToPointer(), 0, __fixedLocals => {
+                ConvertDoubleArray_byte(ptr_path, @path, (void **) ptr_path.ToPointer(), 0, __fixedLocals => {
                     fixed (int *ptr_length = @length) {
-                        Native_CompileShaderIncludeARB(@shader, @count, (char **) ptr_chars_path.ToPointer(), @ptr_length);
+                        Native_CompileShaderIncludeARB(@shader, @count, (byte **) ptr_path.ToPointer(), @ptr_length);
                     }
-                });
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_path);
+                Marshal.FreeHGlobal(ptr_path);
             }
         }
 
@@ -3296,39 +3309,39 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glCreateShaderProgramEXT")]
-        static extern uint Native_CreateShaderProgramEXT(GlShaderType @type, string @string);
+        static extern uint Native_CreateShaderProgramEXT(GlShaderType @type, byte* @string);
 
-        public uint CreateShaderProgramEXT(GlShaderType @type, string @string) {
-            return Native_CreateShaderProgramEXT(@type, @string);
+        public uint CreateShaderProgramEXT(GlShaderType @type, byte[] @string) {
+            fixed (byte *ptr_string = @string) {
+                return Native_CreateShaderProgramEXT(@type, @ptr_string);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glCreateShaderProgramv")]
-        static extern uint Native_CreateShaderProgramv(GlShaderType @type, int @count, char** @strings);
+        static extern uint Native_CreateShaderProgramv(GlShaderType @type, int @count, byte** @strings);
 
-        public uint CreateShaderProgramv(GlShaderType @type, int @count, string[] @strings) {
-            char[][] chars_strings = @strings.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_strings = Marshal.AllocHGlobal(@chars_strings.Length * sizeof(void *));
+        public uint CreateShaderProgramv(GlShaderType @type, int @count, byte[][] @strings) {
+            IntPtr ptr_strings = Marshal.AllocHGlobal(@strings.Length * sizeof(void *));
             try {
-                return ConvertDoubleArray_char(ptr_chars_strings, @chars_strings, (void **) ptr_chars_strings.ToPointer(), 0, __fixedLocals => {
-                    return Native_CreateShaderProgramv(@type, @count, (char **) ptr_chars_strings.ToPointer());
-                });
+                return ConvertDoubleArray_byte(ptr_strings, @strings, (void **) ptr_strings.ToPointer(), 0, __fixedLocals => {
+                    return Native_CreateShaderProgramv(@type, @count, (byte **) ptr_strings.ToPointer());
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_strings);
+                Marshal.FreeHGlobal(ptr_strings);
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glCreateShaderProgramvEXT")]
-        static extern uint Native_CreateShaderProgramvEXT(GlShaderType @type, int @count, char** @strings);
+        static extern uint Native_CreateShaderProgramvEXT(GlShaderType @type, int @count, byte** @strings);
 
-        public uint CreateShaderProgramvEXT(GlShaderType @type, int @count, string[] @strings) {
-            char[][] chars_strings = @strings.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_strings = Marshal.AllocHGlobal(@chars_strings.Length * sizeof(void *));
+        public uint CreateShaderProgramvEXT(GlShaderType @type, int @count, byte[][] @strings) {
+            IntPtr ptr_strings = Marshal.AllocHGlobal(@strings.Length * sizeof(void *));
             try {
-                return ConvertDoubleArray_char(ptr_chars_strings, @chars_strings, (void **) ptr_chars_strings.ToPointer(), 0, __fixedLocals => {
-                    return Native_CreateShaderProgramvEXT(@type, @count, (char **) ptr_chars_strings.ToPointer());
-                });
+                return ConvertDoubleArray_byte(ptr_strings, @strings, (void **) ptr_strings.ToPointer(), 0, __fixedLocals => {
+                    return Native_CreateShaderProgramvEXT(@type, @count, (byte **) ptr_strings.ToPointer());
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_strings);
+                Marshal.FreeHGlobal(ptr_strings);
             }
         }
 
@@ -3487,31 +3500,39 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDebugMessageInsert")]
-        static extern void Native_DebugMessageInsert(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf);
+        static extern void Native_DebugMessageInsert(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte* @buf);
 
-        public void DebugMessageInsert(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf) {
-            Native_DebugMessageInsert(@source, @type, @id, @severity, @length, @buf);
+        public void DebugMessageInsert(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte[] @buf) {
+            fixed (byte *ptr_buf = @buf) {
+                Native_DebugMessageInsert(@source, @type, @id, @severity, @length, @ptr_buf);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDebugMessageInsertAMD")]
-        static extern void Native_DebugMessageInsertAMD(uint @category, GlDebugSeverity @severity, uint @id, int @length, string @buf);
+        static extern void Native_DebugMessageInsertAMD(uint @category, GlDebugSeverity @severity, uint @id, int @length, byte* @buf);
 
-        public void DebugMessageInsertAMD(uint @category, GlDebugSeverity @severity, uint @id, int @length, string @buf) {
-            Native_DebugMessageInsertAMD(@category, @severity, @id, @length, @buf);
+        public void DebugMessageInsertAMD(uint @category, GlDebugSeverity @severity, uint @id, int @length, byte[] @buf) {
+            fixed (byte *ptr_buf = @buf) {
+                Native_DebugMessageInsertAMD(@category, @severity, @id, @length, @ptr_buf);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDebugMessageInsertARB")]
-        static extern void Native_DebugMessageInsertARB(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf);
+        static extern void Native_DebugMessageInsertARB(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte* @buf);
 
-        public void DebugMessageInsertARB(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf) {
-            Native_DebugMessageInsertARB(@source, @type, @id, @severity, @length, @buf);
+        public void DebugMessageInsertARB(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte[] @buf) {
+            fixed (byte *ptr_buf = @buf) {
+                Native_DebugMessageInsertARB(@source, @type, @id, @severity, @length, @ptr_buf);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDebugMessageInsertKHR")]
-        static extern void Native_DebugMessageInsertKHR(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf);
+        static extern void Native_DebugMessageInsertKHR(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte* @buf);
 
-        public void DebugMessageInsertKHR(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, string @buf) {
-            Native_DebugMessageInsertKHR(@source, @type, @id, @severity, @length, @buf);
+        public void DebugMessageInsertKHR(GlDebugSource @source, GlDebugType @type, uint @id, GlDebugSeverity @severity, int @length, byte[] @buf) {
+            fixed (byte *ptr_buf = @buf) {
+                Native_DebugMessageInsertKHR(@source, @type, @id, @severity, @length, @ptr_buf);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDeformSGIX")]
@@ -3642,10 +3663,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDeleteNamedStringARB")]
-        static extern void Native_DeleteNamedStringARB(int @namelen, string @name);
+        static extern void Native_DeleteNamedStringARB(int @namelen, byte* @name);
 
-        public void DeleteNamedStringARB(int @namelen, string @name) {
-            Native_DeleteNamedStringARB(@namelen, @name);
+        public void DeleteNamedStringARB(int @namelen, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                Native_DeleteNamedStringARB(@namelen, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glDeleteNamesAMD")]
@@ -4817,7 +4840,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_bool(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_EdgeFlagPointerListIBM(@stride, (bool **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -5257,7 +5280,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_ExtGetBufferPointervQCOM(@target, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -5286,11 +5309,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glExtGetProgramBinarySourceQCOM")]
-        static extern void Native_ExtGetProgramBinarySourceQCOM(uint @program, GlShaderType @shadertype, string @source, int* @length);
+        static extern void Native_ExtGetProgramBinarySourceQCOM(uint @program, GlShaderType @shadertype, byte* @source, int* @length);
 
-        public void ExtGetProgramBinarySourceQCOM(uint @program, GlShaderType @shadertype, string @source, int[] @length) {
-            fixed (int *ptr_length = @length) {
-                Native_ExtGetProgramBinarySourceQCOM(@program, @shadertype, @source, @ptr_length);
+        public void ExtGetProgramBinarySourceQCOM(uint @program, GlShaderType @shadertype, byte[] @source, int[] @length) {
+            fixed (byte *ptr_source = @source) {
+                fixed (int *ptr_length = @length) {
+                    Native_ExtGetProgramBinarySourceQCOM(@program, @shadertype, @ptr_source, @ptr_length);
+                }
             }
         }
 
@@ -5572,7 +5597,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_FogCoordPointerListIBM(@type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -6537,46 +6562,54 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveAttrib")]
-        static extern void Native_GetActiveAttrib(uint @program, uint @index, int @bufSize, int* @length, int* @size, GlAttributeType* @type, string @name);
+        static extern void Native_GetActiveAttrib(uint @program, uint @index, int @bufSize, int* @length, int* @size, GlAttributeType* @type, byte* @name);
 
-        public void GetActiveAttrib(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, GlAttributeType[] @type, string @name) {
+        public void GetActiveAttrib(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, GlAttributeType[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (GlAttributeType *ptr_type = @type) {
-                        Native_GetActiveAttrib(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetActiveAttrib(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveAttribARB")]
-        static extern void Native_GetActiveAttribARB(IntPtr @programObj, uint @index, int @maxLength, int* @length, int* @size, GlAttributeType* @type, string @name);
+        static extern void Native_GetActiveAttribARB(IntPtr @programObj, uint @index, int @maxLength, int* @length, int* @size, GlAttributeType* @type, byte* @name);
 
-        public void GetActiveAttribARB(IntPtr @programObj, uint @index, int @maxLength, int[] @length, int[] @size, GlAttributeType[] @type, string @name) {
+        public void GetActiveAttribARB(IntPtr @programObj, uint @index, int @maxLength, int[] @length, int[] @size, GlAttributeType[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (GlAttributeType *ptr_type = @type) {
-                        Native_GetActiveAttribARB(@programObj, @index, @maxLength, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetActiveAttribARB(@programObj, @index, @maxLength, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveSubroutineName")]
-        static extern void Native_GetActiveSubroutineName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int* @length, string @name);
+        static extern void Native_GetActiveSubroutineName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int* @length, byte* @name);
 
-        public void GetActiveSubroutineName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int[] @length, string @name) {
+        public void GetActiveSubroutineName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int[] @length, byte[] @name) {
             fixed (int *ptr_length = @length) {
-                Native_GetActiveSubroutineName(@program, @shadertype, @index, @bufsize, @ptr_length, @name);
+                fixed (byte *ptr_name = @name) {
+                    Native_GetActiveSubroutineName(@program, @shadertype, @index, @bufsize, @ptr_length, @ptr_name);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveSubroutineUniformName")]
-        static extern void Native_GetActiveSubroutineUniformName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int* @length, string @name);
+        static extern void Native_GetActiveSubroutineUniformName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int* @length, byte* @name);
 
-        public void GetActiveSubroutineUniformName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int[] @length, string @name) {
+        public void GetActiveSubroutineUniformName(uint @program, GlShaderType @shadertype, uint @index, int @bufsize, int[] @length, byte[] @name) {
             fixed (int *ptr_length = @length) {
-                Native_GetActiveSubroutineUniformName(@program, @shadertype, @index, @bufsize, @ptr_length, @name);
+                fixed (byte *ptr_name = @name) {
+                    Native_GetActiveSubroutineUniformName(@program, @shadertype, @index, @bufsize, @ptr_length, @ptr_name);
+                }
             }
         }
 
@@ -6590,37 +6623,43 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveUniform")]
-        static extern void Native_GetActiveUniform(uint @program, uint @index, int @bufSize, int* @length, int* @size, GlAttributeType* @type, string @name);
+        static extern void Native_GetActiveUniform(uint @program, uint @index, int @bufSize, int* @length, int* @size, GlAttributeType* @type, byte* @name);
 
-        public void GetActiveUniform(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, GlAttributeType[] @type, string @name) {
+        public void GetActiveUniform(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, GlAttributeType[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (GlAttributeType *ptr_type = @type) {
-                        Native_GetActiveUniform(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetActiveUniform(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveUniformARB")]
-        static extern void Native_GetActiveUniformARB(IntPtr @programObj, uint @index, int @maxLength, int* @length, int* @size, GlAttributeType* @type, string @name);
+        static extern void Native_GetActiveUniformARB(IntPtr @programObj, uint @index, int @maxLength, int* @length, int* @size, GlAttributeType* @type, byte* @name);
 
-        public void GetActiveUniformARB(IntPtr @programObj, uint @index, int @maxLength, int[] @length, int[] @size, GlAttributeType[] @type, string @name) {
+        public void GetActiveUniformARB(IntPtr @programObj, uint @index, int @maxLength, int[] @length, int[] @size, GlAttributeType[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (GlAttributeType *ptr_type = @type) {
-                        Native_GetActiveUniformARB(@programObj, @index, @maxLength, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetActiveUniformARB(@programObj, @index, @maxLength, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveUniformBlockName")]
-        static extern void Native_GetActiveUniformBlockName(uint @program, uint @uniformBlockIndex, int @bufSize, int* @length, string @uniformBlockName);
+        static extern void Native_GetActiveUniformBlockName(uint @program, uint @uniformBlockIndex, int @bufSize, int* @length, byte* @uniformBlockName);
 
-        public void GetActiveUniformBlockName(uint @program, uint @uniformBlockIndex, int @bufSize, int[] @length, string @uniformBlockName) {
+        public void GetActiveUniformBlockName(uint @program, uint @uniformBlockIndex, int @bufSize, int[] @length, byte[] @uniformBlockName) {
             fixed (int *ptr_length = @length) {
-                Native_GetActiveUniformBlockName(@program, @uniformBlockIndex, @bufSize, @ptr_length, @uniformBlockName);
+                fixed (byte *ptr_uniformBlockName = @uniformBlockName) {
+                    Native_GetActiveUniformBlockName(@program, @uniformBlockIndex, @bufSize, @ptr_length, @ptr_uniformBlockName);
+                }
             }
         }
 
@@ -6634,11 +6673,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveUniformName")]
-        static extern void Native_GetActiveUniformName(uint @program, uint @uniformIndex, int @bufSize, int* @length, string @uniformName);
+        static extern void Native_GetActiveUniformName(uint @program, uint @uniformIndex, int @bufSize, int* @length, byte* @uniformName);
 
-        public void GetActiveUniformName(uint @program, uint @uniformIndex, int @bufSize, int[] @length, string @uniformName) {
+        public void GetActiveUniformName(uint @program, uint @uniformIndex, int @bufSize, int[] @length, byte[] @uniformName) {
             fixed (int *ptr_length = @length) {
-                Native_GetActiveUniformName(@program, @uniformIndex, @bufSize, @ptr_length, @uniformName);
+                fixed (byte *ptr_uniformName = @uniformName) {
+                    Native_GetActiveUniformName(@program, @uniformIndex, @bufSize, @ptr_length, @ptr_uniformName);
+                }
             }
         }
 
@@ -6654,13 +6695,15 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetActiveVaryingNV")]
-        static extern void Native_GetActiveVaryingNV(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, string @name);
+        static extern void Native_GetActiveVaryingNV(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, byte* @name);
 
-        public void GetActiveVaryingNV(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, string @name) {
+        public void GetActiveVaryingNV(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (uint *ptr_type = @type) {
-                        Native_GetActiveVaryingNV(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetActiveVaryingNV(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
@@ -6707,17 +6750,21 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetAttribLocation")]
-        static extern int Native_GetAttribLocation(uint @program, string @name);
+        static extern int Native_GetAttribLocation(uint @program, byte* @name);
 
-        public int GetAttribLocation(uint @program, string @name) {
-            return Native_GetAttribLocation(@program, @name);
+        public int GetAttribLocation(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetAttribLocation(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetAttribLocationARB")]
-        static extern int Native_GetAttribLocationARB(IntPtr @programObj, string @name);
+        static extern int Native_GetAttribLocationARB(IntPtr @programObj, byte* @name);
 
-        public int GetAttribLocationARB(IntPtr @programObj, string @name) {
-            return Native_GetAttribLocationARB(@programObj, @name);
+        public int GetAttribLocationARB(IntPtr @programObj, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetAttribLocationARB(@programObj, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetBooleanIndexedvEXT")]
@@ -6791,7 +6838,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetBufferPointerv(@target, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -6805,7 +6852,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetBufferPointervARB(@target, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -6819,7 +6866,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetBufferPointervOES(@target, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -7148,15 +7195,17 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetDebugMessageLog")]
-        static extern uint Native_GetDebugMessageLog(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, string @messageLog);
+        static extern uint Native_GetDebugMessageLog(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, byte* @messageLog);
 
-        public uint GetDebugMessageLog(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, string @messageLog) {
+        public uint GetDebugMessageLog(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, byte[] @messageLog) {
             fixed (GlDebugSource *ptr_sources = @sources) {
                 fixed (GlDebugType *ptr_types = @types) {
                     fixed (uint *ptr_ids = @ids) {
                         fixed (GlDebugSeverity *ptr_severities = @severities) {
                             fixed (int *ptr_lengths = @lengths) {
-                                return Native_GetDebugMessageLog(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @messageLog);
+                                fixed (byte *ptr_messageLog = @messageLog) {
+                                    return Native_GetDebugMessageLog(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @ptr_messageLog);
+                                }
                             }
                         }
                     }
@@ -7165,14 +7214,16 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetDebugMessageLogAMD")]
-        static extern uint Native_GetDebugMessageLogAMD(uint @count, int @bufsize, uint* @categories, GlDebugSeverity* @severities, uint* @ids, int* @lengths, string @message);
+        static extern uint Native_GetDebugMessageLogAMD(uint @count, int @bufsize, uint* @categories, GlDebugSeverity* @severities, uint* @ids, int* @lengths, byte* @message);
 
-        public uint GetDebugMessageLogAMD(uint @count, int @bufsize, uint[] @categories, GlDebugSeverity[] @severities, uint[] @ids, int[] @lengths, string @message) {
+        public uint GetDebugMessageLogAMD(uint @count, int @bufsize, uint[] @categories, GlDebugSeverity[] @severities, uint[] @ids, int[] @lengths, byte[] @message) {
             fixed (uint *ptr_categories = @categories) {
                 fixed (GlDebugSeverity *ptr_severities = @severities) {
                     fixed (uint *ptr_ids = @ids) {
                         fixed (int *ptr_lengths = @lengths) {
-                            return Native_GetDebugMessageLogAMD(@count, @bufsize, @ptr_categories, @ptr_severities, @ptr_ids, @ptr_lengths, @message);
+                            fixed (byte *ptr_message = @message) {
+                                return Native_GetDebugMessageLogAMD(@count, @bufsize, @ptr_categories, @ptr_severities, @ptr_ids, @ptr_lengths, @ptr_message);
+                            }
                         }
                     }
                 }
@@ -7180,15 +7231,17 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetDebugMessageLogARB")]
-        static extern uint Native_GetDebugMessageLogARB(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, string @messageLog);
+        static extern uint Native_GetDebugMessageLogARB(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, byte* @messageLog);
 
-        public uint GetDebugMessageLogARB(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, string @messageLog) {
+        public uint GetDebugMessageLogARB(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, byte[] @messageLog) {
             fixed (GlDebugSource *ptr_sources = @sources) {
                 fixed (GlDebugType *ptr_types = @types) {
                     fixed (uint *ptr_ids = @ids) {
                         fixed (GlDebugSeverity *ptr_severities = @severities) {
                             fixed (int *ptr_lengths = @lengths) {
-                                return Native_GetDebugMessageLogARB(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @messageLog);
+                                fixed (byte *ptr_messageLog = @messageLog) {
+                                    return Native_GetDebugMessageLogARB(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @ptr_messageLog);
+                                }
                             }
                         }
                     }
@@ -7197,15 +7250,17 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetDebugMessageLogKHR")]
-        static extern uint Native_GetDebugMessageLogKHR(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, string @messageLog);
+        static extern uint Native_GetDebugMessageLogKHR(uint @count, int @bufSize, GlDebugSource* @sources, GlDebugType* @types, uint* @ids, GlDebugSeverity* @severities, int* @lengths, byte* @messageLog);
 
-        public uint GetDebugMessageLogKHR(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, string @messageLog) {
+        public uint GetDebugMessageLogKHR(uint @count, int @bufSize, GlDebugSource[] @sources, GlDebugType[] @types, uint[] @ids, GlDebugSeverity[] @severities, int[] @lengths, byte[] @messageLog) {
             fixed (GlDebugSource *ptr_sources = @sources) {
                 fixed (GlDebugType *ptr_types = @types) {
                     fixed (uint *ptr_ids = @ids) {
                         fixed (GlDebugSeverity *ptr_severities = @severities) {
                             fixed (int *ptr_lengths = @lengths) {
-                                return Native_GetDebugMessageLogKHR(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @messageLog);
+                                fixed (byte *ptr_messageLog = @messageLog) {
+                                    return Native_GetDebugMessageLogKHR(@count, @bufSize, @ptr_sources, @ptr_types, @ptr_ids, @ptr_severities, @ptr_lengths, @ptr_messageLog);
+                                }
                             }
                         }
                     }
@@ -7259,11 +7314,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetDriverControlStringQCOM")]
-        static extern void Native_GetDriverControlStringQCOM(uint @driverControl, int @bufSize, int* @length, string @driverControlString);
+        static extern void Native_GetDriverControlStringQCOM(uint @driverControl, int @bufSize, int* @length, byte* @driverControlString);
 
-        public void GetDriverControlStringQCOM(uint @driverControl, int @bufSize, int[] @length, string @driverControlString) {
+        public void GetDriverControlStringQCOM(uint @driverControl, int @bufSize, int[] @length, byte[] @driverControlString) {
             fixed (int *ptr_length = @length) {
-                Native_GetDriverControlStringQCOM(@driverControl, @bufSize, @ptr_length, @driverControlString);
+                fixed (byte *ptr_driverControlString = @driverControlString) {
+                    Native_GetDriverControlStringQCOM(@driverControl, @bufSize, @ptr_length, @ptr_driverControlString);
+                }
             }
         }
 
@@ -7403,31 +7460,39 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetFragDataIndex")]
-        static extern int Native_GetFragDataIndex(uint @program, string @name);
+        static extern int Native_GetFragDataIndex(uint @program, byte* @name);
 
-        public int GetFragDataIndex(uint @program, string @name) {
-            return Native_GetFragDataIndex(@program, @name);
+        public int GetFragDataIndex(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetFragDataIndex(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetFragDataIndexEXT")]
-        static extern int Native_GetFragDataIndexEXT(uint @program, string @name);
+        static extern int Native_GetFragDataIndexEXT(uint @program, byte* @name);
 
-        public int GetFragDataIndexEXT(uint @program, string @name) {
-            return Native_GetFragDataIndexEXT(@program, @name);
+        public int GetFragDataIndexEXT(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetFragDataIndexEXT(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetFragDataLocation")]
-        static extern int Native_GetFragDataLocation(uint @program, string @name);
+        static extern int Native_GetFragDataLocation(uint @program, byte* @name);
 
-        public int GetFragDataLocation(uint @program, string @name) {
-            return Native_GetFragDataLocation(@program, @name);
+        public int GetFragDataLocation(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetFragDataLocation(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetFragDataLocationEXT")]
-        static extern int Native_GetFragDataLocationEXT(uint @program, string @name);
+        static extern int Native_GetFragDataLocationEXT(uint @program, byte* @name);
 
-        public int GetFragDataLocationEXT(uint @program, string @name) {
-            return Native_GetFragDataLocationEXT(@program, @name);
+        public int GetFragDataLocationEXT(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetFragDataLocationEXT(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetFragmentLightfvSGIX")]
@@ -7658,11 +7723,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetInfoLogARB")]
-        static extern void Native_GetInfoLogARB(IntPtr @obj, int @maxLength, int* @length, string @infoLog);
+        static extern void Native_GetInfoLogARB(IntPtr @obj, int @maxLength, int* @length, byte* @infoLog);
 
-        public void GetInfoLogARB(IntPtr @obj, int @maxLength, int[] @length, string @infoLog) {
+        public void GetInfoLogARB(IntPtr @obj, int @maxLength, int[] @length, byte[] @infoLog) {
             fixed (int *ptr_length = @length) {
-                Native_GetInfoLogARB(@obj, @maxLength, @ptr_length, @infoLog);
+                fixed (byte *ptr_infoLog = @infoLog) {
+                    Native_GetInfoLogARB(@obj, @maxLength, @ptr_length, @ptr_infoLog);
+                }
             }
         }
 
@@ -8255,7 +8322,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetNamedBufferPointerv(@buffer, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8269,7 +8336,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetNamedBufferPointervEXT(@buffer, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8411,20 +8478,26 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetNamedStringARB")]
-        static extern void Native_GetNamedStringARB(int @namelen, string @name, int @bufSize, int* @stringlen, string @string);
+        static extern void Native_GetNamedStringARB(int @namelen, byte* @name, int @bufSize, int* @stringlen, byte* @string);
 
-        public void GetNamedStringARB(int @namelen, string @name, int @bufSize, int[] @stringlen, string @string) {
-            fixed (int *ptr_stringlen = @stringlen) {
-                Native_GetNamedStringARB(@namelen, @name, @bufSize, @ptr_stringlen, @string);
+        public void GetNamedStringARB(int @namelen, byte[] @name, int @bufSize, int[] @stringlen, byte[] @string) {
+            fixed (byte *ptr_name = @name) {
+                fixed (int *ptr_stringlen = @stringlen) {
+                    fixed (byte *ptr_string = @string) {
+                        Native_GetNamedStringARB(@namelen, @ptr_name, @bufSize, @ptr_stringlen, @ptr_string);
+                    }
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetNamedStringivARB")]
-        static extern void Native_GetNamedStringivARB(int @namelen, string @name, uint @pname, int* @params);
+        static extern void Native_GetNamedStringivARB(int @namelen, byte* @name, uint @pname, int* @params);
 
-        public void GetNamedStringivARB(int @namelen, string @name, uint @pname, int[] @params) {
-            fixed (int *ptr_params = @params) {
-                Native_GetNamedStringivARB(@namelen, @name, @pname, @ptr_params);
+        public void GetNamedStringivARB(int @namelen, byte[] @name, uint @pname, int[] @params) {
+            fixed (byte *ptr_name = @name) {
+                fixed (int *ptr_params = @params) {
+                    Native_GetNamedStringivARB(@namelen, @ptr_name, @pname, @ptr_params);
+                }
             }
         }
 
@@ -8456,29 +8529,35 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetObjectLabel")]
-        static extern void Native_GetObjectLabel(uint @identifier, uint @name, int @bufSize, int* @length, string @label);
+        static extern void Native_GetObjectLabel(uint @identifier, uint @name, int @bufSize, int* @length, byte* @label);
 
-        public void GetObjectLabel(uint @identifier, uint @name, int @bufSize, int[] @length, string @label) {
+        public void GetObjectLabel(uint @identifier, uint @name, int @bufSize, int[] @length, byte[] @label) {
             fixed (int *ptr_length = @length) {
-                Native_GetObjectLabel(@identifier, @name, @bufSize, @ptr_length, @label);
+                fixed (byte *ptr_label = @label) {
+                    Native_GetObjectLabel(@identifier, @name, @bufSize, @ptr_length, @ptr_label);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetObjectLabelEXT")]
-        static extern void Native_GetObjectLabelEXT(uint @type, uint @object, int @bufSize, int* @length, string @label);
+        static extern void Native_GetObjectLabelEXT(uint @type, uint @object, int @bufSize, int* @length, byte* @label);
 
-        public void GetObjectLabelEXT(uint @type, uint @object, int @bufSize, int[] @length, string @label) {
+        public void GetObjectLabelEXT(uint @type, uint @object, int @bufSize, int[] @length, byte[] @label) {
             fixed (int *ptr_length = @length) {
-                Native_GetObjectLabelEXT(@type, @object, @bufSize, @ptr_length, @label);
+                fixed (byte *ptr_label = @label) {
+                    Native_GetObjectLabelEXT(@type, @object, @bufSize, @ptr_length, @ptr_label);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetObjectLabelKHR")]
-        static extern void Native_GetObjectLabelKHR(uint @identifier, uint @name, int @bufSize, int* @length, string @label);
+        static extern void Native_GetObjectLabelKHR(uint @identifier, uint @name, int @bufSize, int* @length, byte* @label);
 
-        public void GetObjectLabelKHR(uint @identifier, uint @name, int @bufSize, int[] @length, string @label) {
+        public void GetObjectLabelKHR(uint @identifier, uint @name, int @bufSize, int[] @length, byte[] @label) {
             fixed (int *ptr_length = @length) {
-                Native_GetObjectLabelKHR(@identifier, @name, @bufSize, @ptr_length, @label);
+                fixed (byte *ptr_label = @label) {
+                    Native_GetObjectLabelKHR(@identifier, @name, @bufSize, @ptr_length, @ptr_label);
+                }
             }
         }
 
@@ -8510,23 +8589,27 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetObjectPtrLabel")]
-        static extern void Native_GetObjectPtrLabel(byte* @ptr, int @bufSize, int* @length, string @label);
+        static extern void Native_GetObjectPtrLabel(byte* @ptr, int @bufSize, int* @length, byte* @label);
 
-        public void GetObjectPtrLabel(byte[] @ptr, int @bufSize, int[] @length, string @label) {
+        public void GetObjectPtrLabel(byte[] @ptr, int @bufSize, int[] @length, byte[] @label) {
             fixed (byte *ptr_ptr = @ptr) {
                 fixed (int *ptr_length = @length) {
-                    Native_GetObjectPtrLabel(@ptr_ptr, @bufSize, @ptr_length, @label);
+                    fixed (byte *ptr_label = @label) {
+                        Native_GetObjectPtrLabel(@ptr_ptr, @bufSize, @ptr_length, @ptr_label);
+                    }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetObjectPtrLabelKHR")]
-        static extern void Native_GetObjectPtrLabelKHR(byte* @ptr, int @bufSize, int* @length, string @label);
+        static extern void Native_GetObjectPtrLabelKHR(byte* @ptr, int @bufSize, int* @length, byte* @label);
 
-        public void GetObjectPtrLabelKHR(byte[] @ptr, int @bufSize, int[] @length, string @label) {
+        public void GetObjectPtrLabelKHR(byte[] @ptr, int @bufSize, int[] @length, byte[] @label) {
             fixed (byte *ptr_ptr = @ptr) {
                 fixed (int *ptr_length = @length) {
-                    Native_GetObjectPtrLabelKHR(@ptr_ptr, @bufSize, @ptr_length, @label);
+                    fixed (byte *ptr_label = @label) {
+                        Native_GetObjectPtrLabelKHR(@ptr_ptr, @bufSize, @ptr_length, @ptr_label);
+                    }
                 }
             }
         }
@@ -8669,15 +8752,19 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetPerfCounterInfoINTEL")]
-        static extern void Native_GetPerfCounterInfoINTEL(uint @queryId, uint @counterId, uint @counterNameLength, string @counterName, uint @counterDescLength, string @counterDesc, uint* @counterOffset, uint* @counterDataSize, uint* @counterTypeEnum, uint* @counterDataTypeEnum, ulong* @rawCounterMaxValue);
+        static extern void Native_GetPerfCounterInfoINTEL(uint @queryId, uint @counterId, uint @counterNameLength, byte* @counterName, uint @counterDescLength, byte* @counterDesc, uint* @counterOffset, uint* @counterDataSize, uint* @counterTypeEnum, uint* @counterDataTypeEnum, ulong* @rawCounterMaxValue);
 
-        public void GetPerfCounterInfoINTEL(uint @queryId, uint @counterId, uint @counterNameLength, string @counterName, uint @counterDescLength, string @counterDesc, uint[] @counterOffset, uint[] @counterDataSize, uint[] @counterTypeEnum, uint[] @counterDataTypeEnum, ulong[] @rawCounterMaxValue) {
-            fixed (uint *ptr_counterOffset = @counterOffset) {
-                fixed (uint *ptr_counterDataSize = @counterDataSize) {
-                    fixed (uint *ptr_counterTypeEnum = @counterTypeEnum) {
-                        fixed (uint *ptr_counterDataTypeEnum = @counterDataTypeEnum) {
-                            fixed (ulong *ptr_rawCounterMaxValue = @rawCounterMaxValue) {
-                                Native_GetPerfCounterInfoINTEL(@queryId, @counterId, @counterNameLength, @counterName, @counterDescLength, @counterDesc, @ptr_counterOffset, @ptr_counterDataSize, @ptr_counterTypeEnum, @ptr_counterDataTypeEnum, @ptr_rawCounterMaxValue);
+        public void GetPerfCounterInfoINTEL(uint @queryId, uint @counterId, uint @counterNameLength, byte[] @counterName, uint @counterDescLength, byte[] @counterDesc, uint[] @counterOffset, uint[] @counterDataSize, uint[] @counterTypeEnum, uint[] @counterDataTypeEnum, ulong[] @rawCounterMaxValue) {
+            fixed (byte *ptr_counterName = @counterName) {
+                fixed (byte *ptr_counterDesc = @counterDesc) {
+                    fixed (uint *ptr_counterOffset = @counterOffset) {
+                        fixed (uint *ptr_counterDataSize = @counterDataSize) {
+                            fixed (uint *ptr_counterTypeEnum = @counterTypeEnum) {
+                                fixed (uint *ptr_counterDataTypeEnum = @counterDataTypeEnum) {
+                                    fixed (ulong *ptr_rawCounterMaxValue = @rawCounterMaxValue) {
+                                        Native_GetPerfCounterInfoINTEL(@queryId, @counterId, @counterNameLength, @ptr_counterName, @counterDescLength, @ptr_counterDesc, @ptr_counterOffset, @ptr_counterDataSize, @ptr_counterTypeEnum, @ptr_counterDataTypeEnum, @ptr_rawCounterMaxValue);
+                                    }
+                                }
                             }
                         }
                     }
@@ -8706,11 +8793,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetPerfMonitorCounterStringAMD")]
-        static extern void Native_GetPerfMonitorCounterStringAMD(uint @group, uint @counter, int @bufSize, int* @length, string @counterString);
+        static extern void Native_GetPerfMonitorCounterStringAMD(uint @group, uint @counter, int @bufSize, int* @length, byte* @counterString);
 
-        public void GetPerfMonitorCounterStringAMD(uint @group, uint @counter, int @bufSize, int[] @length, string @counterString) {
+        public void GetPerfMonitorCounterStringAMD(uint @group, uint @counter, int @bufSize, int[] @length, byte[] @counterString) {
             fixed (int *ptr_length = @length) {
-                Native_GetPerfMonitorCounterStringAMD(@group, @counter, @bufSize, @ptr_length, @counterString);
+                fixed (byte *ptr_counterString = @counterString) {
+                    Native_GetPerfMonitorCounterStringAMD(@group, @counter, @bufSize, @ptr_length, @ptr_counterString);
+                }
             }
         }
 
@@ -8728,11 +8817,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetPerfMonitorGroupStringAMD")]
-        static extern void Native_GetPerfMonitorGroupStringAMD(uint @group, int @bufSize, int* @length, string @groupString);
+        static extern void Native_GetPerfMonitorGroupStringAMD(uint @group, int @bufSize, int* @length, byte* @groupString);
 
-        public void GetPerfMonitorGroupStringAMD(uint @group, int @bufSize, int[] @length, string @groupString) {
+        public void GetPerfMonitorGroupStringAMD(uint @group, int @bufSize, int[] @length, byte[] @groupString) {
             fixed (int *ptr_length = @length) {
-                Native_GetPerfMonitorGroupStringAMD(@group, @bufSize, @ptr_length, @groupString);
+                fixed (byte *ptr_groupString = @groupString) {
+                    Native_GetPerfMonitorGroupStringAMD(@group, @bufSize, @ptr_length, @ptr_groupString);
+                }
             }
         }
 
@@ -8759,23 +8850,27 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetPerfQueryIdByNameINTEL")]
-        static extern void Native_GetPerfQueryIdByNameINTEL(string @queryName, uint* @queryId);
+        static extern void Native_GetPerfQueryIdByNameINTEL(byte* @queryName, uint* @queryId);
 
-        public void GetPerfQueryIdByNameINTEL(string @queryName, uint[] @queryId) {
-            fixed (uint *ptr_queryId = @queryId) {
-                Native_GetPerfQueryIdByNameINTEL(@queryName, @ptr_queryId);
+        public void GetPerfQueryIdByNameINTEL(byte[] @queryName, uint[] @queryId) {
+            fixed (byte *ptr_queryName = @queryName) {
+                fixed (uint *ptr_queryId = @queryId) {
+                    Native_GetPerfQueryIdByNameINTEL(@ptr_queryName, @ptr_queryId);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetPerfQueryInfoINTEL")]
-        static extern void Native_GetPerfQueryInfoINTEL(uint @queryId, uint @queryNameLength, string @queryName, uint* @dataSize, uint* @noCounters, uint* @noInstances, uint* @capsMask);
+        static extern void Native_GetPerfQueryInfoINTEL(uint @queryId, uint @queryNameLength, byte* @queryName, uint* @dataSize, uint* @noCounters, uint* @noInstances, uint* @capsMask);
 
-        public void GetPerfQueryInfoINTEL(uint @queryId, uint @queryNameLength, string @queryName, uint[] @dataSize, uint[] @noCounters, uint[] @noInstances, uint[] @capsMask) {
-            fixed (uint *ptr_dataSize = @dataSize) {
-                fixed (uint *ptr_noCounters = @noCounters) {
-                    fixed (uint *ptr_noInstances = @noInstances) {
-                        fixed (uint *ptr_capsMask = @capsMask) {
-                            Native_GetPerfQueryInfoINTEL(@queryId, @queryNameLength, @queryName, @ptr_dataSize, @ptr_noCounters, @ptr_noInstances, @ptr_capsMask);
+        public void GetPerfQueryInfoINTEL(uint @queryId, uint @queryNameLength, byte[] @queryName, uint[] @dataSize, uint[] @noCounters, uint[] @noInstances, uint[] @capsMask) {
+            fixed (byte *ptr_queryName = @queryName) {
+                fixed (uint *ptr_dataSize = @dataSize) {
+                    fixed (uint *ptr_noCounters = @noCounters) {
+                        fixed (uint *ptr_noInstances = @noInstances) {
+                            fixed (uint *ptr_capsMask = @capsMask) {
+                                Native_GetPerfQueryInfoINTEL(@queryId, @queryNameLength, @ptr_queryName, @ptr_dataSize, @ptr_noCounters, @ptr_noInstances, @ptr_capsMask);
+                            }
                         }
                     }
                 }
@@ -8862,7 +8957,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_data, @data, (void **) ptr_data.ToPointer(), 0, __fixedLocals => {
                     Native_GetPointerIndexedvEXT(@target, @index, (byte **) ptr_data.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_data);
             }
@@ -8876,7 +8971,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetPointeri_vEXT(@pname, @index, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8890,7 +8985,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetPointerv(@pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8904,7 +8999,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetPointervEXT(@pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8918,7 +9013,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetPointervKHR(@pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -8996,11 +9091,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramInfoLog")]
-        static extern void Native_GetProgramInfoLog(uint @program, int @bufSize, int* @length, string @infoLog);
+        static extern void Native_GetProgramInfoLog(uint @program, int @bufSize, int* @length, byte* @infoLog);
 
-        public void GetProgramInfoLog(uint @program, int @bufSize, int[] @length, string @infoLog) {
+        public void GetProgramInfoLog(uint @program, int @bufSize, int[] @length, byte[] @infoLog) {
             fixed (int *ptr_length = @length) {
-                Native_GetProgramInfoLog(@program, @bufSize, @ptr_length, @infoLog);
+                fixed (byte *ptr_infoLog = @infoLog) {
+                    Native_GetProgramInfoLog(@program, @bufSize, @ptr_length, @ptr_infoLog);
+                }
             }
         }
 
@@ -9090,20 +9187,24 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramPipelineInfoLog")]
-        static extern void Native_GetProgramPipelineInfoLog(uint @pipeline, int @bufSize, int* @length, string @infoLog);
+        static extern void Native_GetProgramPipelineInfoLog(uint @pipeline, int @bufSize, int* @length, byte* @infoLog);
 
-        public void GetProgramPipelineInfoLog(uint @pipeline, int @bufSize, int[] @length, string @infoLog) {
+        public void GetProgramPipelineInfoLog(uint @pipeline, int @bufSize, int[] @length, byte[] @infoLog) {
             fixed (int *ptr_length = @length) {
-                Native_GetProgramPipelineInfoLog(@pipeline, @bufSize, @ptr_length, @infoLog);
+                fixed (byte *ptr_infoLog = @infoLog) {
+                    Native_GetProgramPipelineInfoLog(@pipeline, @bufSize, @ptr_length, @ptr_infoLog);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramPipelineInfoLogEXT")]
-        static extern void Native_GetProgramPipelineInfoLogEXT(uint @pipeline, int @bufSize, int* @length, string @infoLog);
+        static extern void Native_GetProgramPipelineInfoLogEXT(uint @pipeline, int @bufSize, int* @length, byte* @infoLog);
 
-        public void GetProgramPipelineInfoLogEXT(uint @pipeline, int @bufSize, int[] @length, string @infoLog) {
+        public void GetProgramPipelineInfoLogEXT(uint @pipeline, int @bufSize, int[] @length, byte[] @infoLog) {
             fixed (int *ptr_length = @length) {
-                Native_GetProgramPipelineInfoLogEXT(@pipeline, @bufSize, @ptr_length, @infoLog);
+                fixed (byte *ptr_infoLog = @infoLog) {
+                    Native_GetProgramPipelineInfoLogEXT(@pipeline, @bufSize, @ptr_length, @ptr_infoLog);
+                }
             }
         }
 
@@ -9126,39 +9227,49 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramResourceIndex")]
-        static extern uint Native_GetProgramResourceIndex(uint @program, GlProgramInterface @programInterface, string @name);
+        static extern uint Native_GetProgramResourceIndex(uint @program, GlProgramInterface @programInterface, byte* @name);
 
-        public uint GetProgramResourceIndex(uint @program, GlProgramInterface @programInterface, string @name) {
-            return Native_GetProgramResourceIndex(@program, @programInterface, @name);
+        public uint GetProgramResourceIndex(uint @program, GlProgramInterface @programInterface, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetProgramResourceIndex(@program, @programInterface, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramResourceLocation")]
-        static extern int Native_GetProgramResourceLocation(uint @program, GlProgramInterface @programInterface, string @name);
+        static extern int Native_GetProgramResourceLocation(uint @program, GlProgramInterface @programInterface, byte* @name);
 
-        public int GetProgramResourceLocation(uint @program, GlProgramInterface @programInterface, string @name) {
-            return Native_GetProgramResourceLocation(@program, @programInterface, @name);
+        public int GetProgramResourceLocation(uint @program, GlProgramInterface @programInterface, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetProgramResourceLocation(@program, @programInterface, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramResourceLocationIndex")]
-        static extern int Native_GetProgramResourceLocationIndex(uint @program, GlProgramInterface @programInterface, string @name);
+        static extern int Native_GetProgramResourceLocationIndex(uint @program, GlProgramInterface @programInterface, byte* @name);
 
-        public int GetProgramResourceLocationIndex(uint @program, GlProgramInterface @programInterface, string @name) {
-            return Native_GetProgramResourceLocationIndex(@program, @programInterface, @name);
+        public int GetProgramResourceLocationIndex(uint @program, GlProgramInterface @programInterface, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetProgramResourceLocationIndex(@program, @programInterface, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramResourceLocationIndexEXT")]
-        static extern int Native_GetProgramResourceLocationIndexEXT(uint @program, GlProgramInterface @programInterface, string @name);
+        static extern int Native_GetProgramResourceLocationIndexEXT(uint @program, GlProgramInterface @programInterface, byte* @name);
 
-        public int GetProgramResourceLocationIndexEXT(uint @program, GlProgramInterface @programInterface, string @name) {
-            return Native_GetProgramResourceLocationIndexEXT(@program, @programInterface, @name);
+        public int GetProgramResourceLocationIndexEXT(uint @program, GlProgramInterface @programInterface, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetProgramResourceLocationIndexEXT(@program, @programInterface, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetProgramResourceName")]
-        static extern void Native_GetProgramResourceName(uint @program, GlProgramInterface @programInterface, uint @index, int @bufSize, int* @length, string @name);
+        static extern void Native_GetProgramResourceName(uint @program, GlProgramInterface @programInterface, uint @index, int @bufSize, int* @length, byte* @name);
 
-        public void GetProgramResourceName(uint @program, GlProgramInterface @programInterface, uint @index, int @bufSize, int[] @length, string @name) {
+        public void GetProgramResourceName(uint @program, GlProgramInterface @programInterface, uint @index, int @bufSize, int[] @length, byte[] @name) {
             fixed (int *ptr_length = @length) {
-                Native_GetProgramResourceName(@program, @programInterface, @index, @bufSize, @ptr_length, @name);
+                fixed (byte *ptr_name = @name) {
+                    Native_GetProgramResourceName(@program, @programInterface, @index, @bufSize, @ptr_length, @ptr_name);
+                }
             }
         }
 
@@ -9540,11 +9651,13 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetShaderInfoLog")]
-        static extern void Native_GetShaderInfoLog(uint @shader, int @bufSize, int* @length, string @infoLog);
+        static extern void Native_GetShaderInfoLog(uint @shader, int @bufSize, int* @length, byte* @infoLog);
 
-        public void GetShaderInfoLog(uint @shader, int @bufSize, int[] @length, string @infoLog) {
+        public void GetShaderInfoLog(uint @shader, int @bufSize, int[] @length, byte[] @infoLog) {
             fixed (int *ptr_length = @length) {
-                Native_GetShaderInfoLog(@shader, @bufSize, @ptr_length, @infoLog);
+                fixed (byte *ptr_infoLog = @infoLog) {
+                    Native_GetShaderInfoLog(@shader, @bufSize, @ptr_length, @ptr_infoLog);
+                }
             }
         }
 
@@ -9560,20 +9673,24 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetShaderSource")]
-        static extern void Native_GetShaderSource(uint @shader, int @bufSize, int* @length, string @source);
+        static extern void Native_GetShaderSource(uint @shader, int @bufSize, int* @length, byte* @source);
 
-        public void GetShaderSource(uint @shader, int @bufSize, int[] @length, string @source) {
+        public void GetShaderSource(uint @shader, int @bufSize, int[] @length, byte[] @source) {
             fixed (int *ptr_length = @length) {
-                Native_GetShaderSource(@shader, @bufSize, @ptr_length, @source);
+                fixed (byte *ptr_source = @source) {
+                    Native_GetShaderSource(@shader, @bufSize, @ptr_length, @ptr_source);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetShaderSourceARB")]
-        static extern void Native_GetShaderSourceARB(IntPtr @obj, int @maxLength, int* @length, string @source);
+        static extern void Native_GetShaderSourceARB(IntPtr @obj, int @maxLength, int* @length, byte* @source);
 
-        public void GetShaderSourceARB(IntPtr @obj, int @maxLength, int[] @length, string @source) {
+        public void GetShaderSourceARB(IntPtr @obj, int @maxLength, int[] @length, byte[] @source) {
             fixed (int *ptr_length = @length) {
-                Native_GetShaderSourceARB(@obj, @maxLength, @ptr_length, @source);
+                fixed (byte *ptr_source = @source) {
+                    Native_GetShaderSourceARB(@obj, @maxLength, @ptr_length, @ptr_source);
+                }
             }
         }
 
@@ -9617,17 +9734,21 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetSubroutineIndex")]
-        static extern uint Native_GetSubroutineIndex(uint @program, GlShaderType @shadertype, string @name);
+        static extern uint Native_GetSubroutineIndex(uint @program, GlShaderType @shadertype, byte* @name);
 
-        public uint GetSubroutineIndex(uint @program, GlShaderType @shadertype, string @name) {
-            return Native_GetSubroutineIndex(@program, @shadertype, @name);
+        public uint GetSubroutineIndex(uint @program, GlShaderType @shadertype, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetSubroutineIndex(@program, @shadertype, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetSubroutineUniformLocation")]
-        static extern int Native_GetSubroutineUniformLocation(uint @program, GlShaderType @shadertype, string @name);
+        static extern int Native_GetSubroutineUniformLocation(uint @program, GlShaderType @shadertype, byte* @name);
 
-        public int GetSubroutineUniformLocation(uint @program, GlShaderType @shadertype, string @name) {
-            return Native_GetSubroutineUniformLocation(@program, @shadertype, @name);
+        public int GetSubroutineUniformLocation(uint @program, GlShaderType @shadertype, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetSubroutineUniformLocation(@program, @shadertype, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetSynciv")]
@@ -9867,7 +9988,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_params, @params, (void **) ptr_params.ToPointer(), 0, __fixedLocals => {
                     Native_GetTexParameterPointervAPPLE(@target, @pname, (byte **) ptr_params.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_params);
             }
@@ -10096,26 +10217,30 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetTransformFeedbackVarying")]
-        static extern void Native_GetTransformFeedbackVarying(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, string @name);
+        static extern void Native_GetTransformFeedbackVarying(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, byte* @name);
 
-        public void GetTransformFeedbackVarying(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, string @name) {
+        public void GetTransformFeedbackVarying(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (uint *ptr_type = @type) {
-                        Native_GetTransformFeedbackVarying(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetTransformFeedbackVarying(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetTransformFeedbackVaryingEXT")]
-        static extern void Native_GetTransformFeedbackVaryingEXT(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, string @name);
+        static extern void Native_GetTransformFeedbackVaryingEXT(uint @program, uint @index, int @bufSize, int* @length, int* @size, uint* @type, byte* @name);
 
-        public void GetTransformFeedbackVaryingEXT(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, string @name) {
+        public void GetTransformFeedbackVaryingEXT(uint @program, uint @index, int @bufSize, int[] @length, int[] @size, uint[] @type, byte[] @name) {
             fixed (int *ptr_length = @length) {
                 fixed (int *ptr_size = @size) {
                     fixed (uint *ptr_type = @type) {
-                        Native_GetTransformFeedbackVaryingEXT(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @name);
+                        fixed (byte *ptr_name = @name) {
+                            Native_GetTransformFeedbackVaryingEXT(@program, @index, @bufSize, @ptr_length, @ptr_size, @ptr_type, @ptr_name);
+                        }
                     }
                 }
             }
@@ -10158,19 +10283,23 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetTranslatedShaderSourceANGLE")]
-        static extern void Native_GetTranslatedShaderSourceANGLE(uint @shader, int @bufsize, int* @length, string @source);
+        static extern void Native_GetTranslatedShaderSourceANGLE(uint @shader, int @bufsize, int* @length, byte* @source);
 
-        public void GetTranslatedShaderSourceANGLE(uint @shader, int @bufsize, int[] @length, string @source) {
+        public void GetTranslatedShaderSourceANGLE(uint @shader, int @bufsize, int[] @length, byte[] @source) {
             fixed (int *ptr_length = @length) {
-                Native_GetTranslatedShaderSourceANGLE(@shader, @bufsize, @ptr_length, @source);
+                fixed (byte *ptr_source = @source) {
+                    Native_GetTranslatedShaderSourceANGLE(@shader, @bufsize, @ptr_length, @ptr_source);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformBlockIndex")]
-        static extern uint Native_GetUniformBlockIndex(uint @program, string @uniformBlockName);
+        static extern uint Native_GetUniformBlockIndex(uint @program, byte* @uniformBlockName);
 
-        public uint GetUniformBlockIndex(uint @program, string @uniformBlockName) {
-            return Native_GetUniformBlockIndex(@program, @uniformBlockName);
+        public uint GetUniformBlockIndex(uint @program, byte[] @uniformBlockName) {
+            fixed (byte *ptr_uniformBlockName = @uniformBlockName) {
+                return Native_GetUniformBlockIndex(@program, @ptr_uniformBlockName);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformBufferSizeEXT")]
@@ -10181,34 +10310,37 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformIndices")]
-        static extern void Native_GetUniformIndices(uint @program, int @uniformCount, char** @uniformNames, uint* @uniformIndices);
+        static extern void Native_GetUniformIndices(uint @program, int @uniformCount, byte** @uniformNames, uint* @uniformIndices);
 
-        public void GetUniformIndices(uint @program, int @uniformCount, string[] @uniformNames, uint[] @uniformIndices) {
-            char[][] chars_uniformNames = @uniformNames.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_uniformNames = Marshal.AllocHGlobal(@chars_uniformNames.Length * sizeof(void *));
+        public void GetUniformIndices(uint @program, int @uniformCount, byte[][] @uniformNames, uint[] @uniformIndices) {
+            IntPtr ptr_uniformNames = Marshal.AllocHGlobal(@uniformNames.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_uniformNames, @chars_uniformNames, (void **) ptr_chars_uniformNames.ToPointer(), 0, __fixedLocals => {
+                ConvertDoubleArray_byte(ptr_uniformNames, @uniformNames, (void **) ptr_uniformNames.ToPointer(), 0, __fixedLocals => {
                     fixed (uint *ptr_uniformIndices = @uniformIndices) {
-                        Native_GetUniformIndices(@program, @uniformCount, (char **) ptr_chars_uniformNames.ToPointer(), @ptr_uniformIndices);
+                        Native_GetUniformIndices(@program, @uniformCount, (byte **) ptr_uniformNames.ToPointer(), @ptr_uniformIndices);
                     }
-                });
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_uniformNames);
+                Marshal.FreeHGlobal(ptr_uniformNames);
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformLocation")]
-        static extern int Native_GetUniformLocation(uint @program, string @name);
+        static extern int Native_GetUniformLocation(uint @program, byte* @name);
 
-        public int GetUniformLocation(uint @program, string @name) {
-            return Native_GetUniformLocation(@program, @name);
+        public int GetUniformLocation(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetUniformLocation(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformLocationARB")]
-        static extern int Native_GetUniformLocationARB(IntPtr @programObj, string @name);
+        static extern int Native_GetUniformLocationARB(IntPtr @programObj, byte* @name);
 
-        public int GetUniformLocationARB(IntPtr @programObj, string @name) {
-            return Native_GetUniformLocationARB(@programObj, @name);
+        public int GetUniformLocationARB(IntPtr @programObj, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetUniformLocationARB(@programObj, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetUniformOffsetEXT")]
@@ -10397,17 +10529,19 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_data, @data, (void **) ptr_data.ToPointer(), 0, __fixedLocals => {
                     Native_GetVariantPointervEXT(@id, @value, (byte **) ptr_data.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_data);
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetVaryingLocationNV")]
-        static extern int Native_GetVaryingLocationNV(uint @program, string @name);
+        static extern int Native_GetVaryingLocationNV(uint @program, byte* @name);
 
-        public int GetVaryingLocationNV(uint @program, string @name) {
-            return Native_GetVaryingLocationNV(@program, @name);
+        public int GetVaryingLocationNV(uint @program, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetVaryingLocationNV(@program, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetVertexArrayIndexed64iv")]
@@ -10454,7 +10588,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_param, @param, (void **) ptr_param.ToPointer(), 0, __fixedLocals => {
                     Native_GetVertexArrayPointeri_vEXT(@vaobj, @index, @pname, (byte **) ptr_param.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_param);
             }
@@ -10468,7 +10602,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_param, @param, (void **) ptr_param.ToPointer(), 0, __fixedLocals => {
                     Native_GetVertexArrayPointervEXT(@vaobj, @pname, (byte **) ptr_param.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_param);
             }
@@ -10590,7 +10724,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_GetVertexAttribPointerv(@index, @pname, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -10604,7 +10738,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_GetVertexAttribPointervARB(@index, @pname, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -10618,7 +10752,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_GetVertexAttribPointervNV(@index, @pname, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -11408,7 +11542,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_IndexPointerListIBM(@type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -11525,10 +11659,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glInsertEventMarkerEXT")]
-        static extern void Native_InsertEventMarkerEXT(int @length, string @marker);
+        static extern void Native_InsertEventMarkerEXT(int @length, byte* @marker);
 
-        public void InsertEventMarkerEXT(int @length, string @marker) {
-            Native_InsertEventMarkerEXT(@length, @marker);
+        public void InsertEventMarkerEXT(int @length, byte[] @marker) {
+            fixed (byte *ptr_marker = @marker) {
+                Native_InsertEventMarkerEXT(@length, @ptr_marker);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glInstrumentsBufferSGIX")]
@@ -11775,10 +11911,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glIsNamedStringARB")]
-        static extern bool Native_IsNamedStringARB(int @namelen, string @name);
+        static extern bool Native_IsNamedStringARB(int @namelen, byte* @name);
 
-        public bool IsNamedStringARB(int @namelen, string @name) {
-            return Native_IsNamedStringARB(@namelen, @name);
+        public bool IsNamedStringARB(int @namelen, byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_IsNamedStringARB(@namelen, @ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glIsObjectBufferATI")]
@@ -12036,10 +12174,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glLabelObjectEXT")]
-        static extern void Native_LabelObjectEXT(uint @type, uint @object, int @length, string @label);
+        static extern void Native_LabelObjectEXT(uint @type, uint @object, int @length, byte* @label);
 
-        public void LabelObjectEXT(uint @type, uint @object, int @length, string @label) {
-            Native_LabelObjectEXT(@type, @object, @length, @label);
+        public void LabelObjectEXT(uint @type, uint @object, int @length, byte[] @label) {
+            fixed (byte *ptr_label = @label) {
+                Native_LabelObjectEXT(@type, @object, @length, @ptr_label);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glLightEnviSGIX")]
@@ -12240,7 +12380,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                             }
                         }
                     }
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_indirects);
             }
@@ -14910,10 +15050,14 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glNamedStringARB")]
-        static extern void Native_NamedStringARB(uint @type, int @namelen, string @name, int @stringlen, string @string);
+        static extern void Native_NamedStringARB(uint @type, int @namelen, byte* @name, int @stringlen, byte* @string);
 
-        public void NamedStringARB(uint @type, int @namelen, string @name, int @stringlen, string @string) {
-            Native_NamedStringARB(@type, @namelen, @name, @stringlen, @string);
+        public void NamedStringARB(uint @type, int @namelen, byte[] @name, int @stringlen, byte[] @string) {
+            fixed (byte *ptr_name = @name) {
+                fixed (byte *ptr_string = @string) {
+                    Native_NamedStringARB(@type, @namelen, @ptr_name, @stringlen, @ptr_string);
+                }
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glNewList")]
@@ -15118,7 +15262,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_NormalPointerListIBM(@type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -15132,7 +15276,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_NormalPointervINTEL(@type, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -15219,34 +15363,42 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glObjectLabel")]
-        static extern void Native_ObjectLabel(GlObjectIdentifier @identifier, uint @name, int @length, string @label);
+        static extern void Native_ObjectLabel(GlObjectIdentifier @identifier, uint @name, int @length, byte* @label);
 
-        public void ObjectLabel(GlObjectIdentifier @identifier, uint @name, int @length, string @label) {
-            Native_ObjectLabel(@identifier, @name, @length, @label);
+        public void ObjectLabel(GlObjectIdentifier @identifier, uint @name, int @length, byte[] @label) {
+            fixed (byte *ptr_label = @label) {
+                Native_ObjectLabel(@identifier, @name, @length, @ptr_label);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glObjectLabelKHR")]
-        static extern void Native_ObjectLabelKHR(GlObjectIdentifier @identifier, uint @name, int @length, string @label);
+        static extern void Native_ObjectLabelKHR(GlObjectIdentifier @identifier, uint @name, int @length, byte* @label);
 
-        public void ObjectLabelKHR(GlObjectIdentifier @identifier, uint @name, int @length, string @label) {
-            Native_ObjectLabelKHR(@identifier, @name, @length, @label);
+        public void ObjectLabelKHR(GlObjectIdentifier @identifier, uint @name, int @length, byte[] @label) {
+            fixed (byte *ptr_label = @label) {
+                Native_ObjectLabelKHR(@identifier, @name, @length, @ptr_label);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glObjectPtrLabel")]
-        static extern void Native_ObjectPtrLabel(byte* @ptr, int @length, string @label);
+        static extern void Native_ObjectPtrLabel(byte* @ptr, int @length, byte* @label);
 
-        public void ObjectPtrLabel(byte[] @ptr, int @length, string @label) {
+        public void ObjectPtrLabel(byte[] @ptr, int @length, byte[] @label) {
             fixed (byte *ptr_ptr = @ptr) {
-                Native_ObjectPtrLabel(@ptr_ptr, @length, @label);
+                fixed (byte *ptr_label = @label) {
+                    Native_ObjectPtrLabel(@ptr_ptr, @length, @ptr_label);
+                }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glObjectPtrLabelKHR")]
-        static extern void Native_ObjectPtrLabelKHR(byte* @ptr, int @length, string @label);
+        static extern void Native_ObjectPtrLabelKHR(byte* @ptr, int @length, byte* @label);
 
-        public void ObjectPtrLabelKHR(byte[] @ptr, int @length, string @label) {
+        public void ObjectPtrLabelKHR(byte[] @ptr, int @length, byte[] @label) {
             fixed (byte *ptr_ptr = @ptr) {
-                Native_ObjectPtrLabelKHR(@ptr_ptr, @length, @label);
+                fixed (byte *ptr_label = @label) {
+                    Native_ObjectPtrLabelKHR(@ptr_ptr, @length, @ptr_label);
+                }
             }
         }
 
@@ -17698,24 +17850,30 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glPushDebugGroup")]
-        static extern void Native_PushDebugGroup(GlDebugSource @source, uint @id, int @length, string @message);
+        static extern void Native_PushDebugGroup(GlDebugSource @source, uint @id, int @length, byte* @message);
 
-        public void PushDebugGroup(GlDebugSource @source, uint @id, int @length, string @message) {
-            Native_PushDebugGroup(@source, @id, @length, @message);
+        public void PushDebugGroup(GlDebugSource @source, uint @id, int @length, byte[] @message) {
+            fixed (byte *ptr_message = @message) {
+                Native_PushDebugGroup(@source, @id, @length, @ptr_message);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glPushDebugGroupKHR")]
-        static extern void Native_PushDebugGroupKHR(GlDebugSource @source, uint @id, int @length, string @message);
+        static extern void Native_PushDebugGroupKHR(GlDebugSource @source, uint @id, int @length, byte* @message);
 
-        public void PushDebugGroupKHR(GlDebugSource @source, uint @id, int @length, string @message) {
-            Native_PushDebugGroupKHR(@source, @id, @length, @message);
+        public void PushDebugGroupKHR(GlDebugSource @source, uint @id, int @length, byte[] @message) {
+            fixed (byte *ptr_message = @message) {
+                Native_PushDebugGroupKHR(@source, @id, @length, @ptr_message);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glPushGroupMarkerEXT")]
-        static extern void Native_PushGroupMarkerEXT(int @length, string @marker);
+        static extern void Native_PushGroupMarkerEXT(int @length, byte* @marker);
 
-        public void PushGroupMarkerEXT(int @length, string @marker) {
-            Native_PushGroupMarkerEXT(@length, @marker);
+        public void PushGroupMarkerEXT(int @length, byte[] @marker) {
+            fixed (byte *ptr_marker = @marker) {
+                Native_PushGroupMarkerEXT(@length, @ptr_marker);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glPushMatrix")]
@@ -17774,10 +17932,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glQueryResourceTagNV")]
-        static extern void Native_QueryResourceTagNV(int @tagId, string @tagString);
+        static extern void Native_QueryResourceTagNV(int @tagId, byte* @tagString);
 
-        public void QueryResourceTagNV(int @tagId, string @tagString) {
-            Native_QueryResourceTagNV(@tagId, @tagString);
+        public void QueryResourceTagNV(int @tagId, byte[] @tagString) {
+            fixed (byte *ptr_tagString = @tagString) {
+                Native_QueryResourceTagNV(@tagId, @ptr_tagString);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glRasterPos2d")]
@@ -18305,7 +18465,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_ReplacementCodePointerSUN(@type, @stride, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -19219,7 +19379,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_SecondaryColorPointerListIBM(@size, @type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -19364,36 +19524,34 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glShaderSource")]
-        static extern void Native_ShaderSource(uint @shader, int @count, char** @string, int* @length);
+        static extern void Native_ShaderSource(uint @shader, int @count, byte** @string, int* @length);
 
-        public void ShaderSource(uint @shader, int @count, string[] @string, int[] @length) {
-            char[][] chars_string = @string.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_string = Marshal.AllocHGlobal(@chars_string.Length * sizeof(void *));
+        public void ShaderSource(uint @shader, int @count, byte[][] @string, int[] @length) {
+            IntPtr ptr_string = Marshal.AllocHGlobal(@string.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_string, @chars_string, (void **) ptr_chars_string.ToPointer(), 0, __fixedLocals => {
+                ConvertDoubleArray_byte(ptr_string, @string, (void **) ptr_string.ToPointer(), 0, __fixedLocals => {
                     fixed (int *ptr_length = @length) {
-                        Native_ShaderSource(@shader, @count, (char **) ptr_chars_string.ToPointer(), @ptr_length);
+                        Native_ShaderSource(@shader, @count, (byte **) ptr_string.ToPointer(), @ptr_length);
                     }
-                });
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_string);
+                Marshal.FreeHGlobal(ptr_string);
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glShaderSourceARB")]
-        static extern void Native_ShaderSourceARB(IntPtr @shaderObj, int @count, char** @string, int* @length);
+        static extern void Native_ShaderSourceARB(IntPtr @shaderObj, int @count, byte** @string, int* @length);
 
-        public void ShaderSourceARB(IntPtr @shaderObj, int @count, string[] @string, int[] @length) {
-            char[][] chars_string = @string.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_string = Marshal.AllocHGlobal(@chars_string.Length * sizeof(void *));
+        public void ShaderSourceARB(IntPtr @shaderObj, int @count, byte[][] @string, int[] @length) {
+            IntPtr ptr_string = Marshal.AllocHGlobal(@string.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_string, @chars_string, (void **) ptr_chars_string.ToPointer(), 0, __fixedLocals => {
+                ConvertDoubleArray_byte(ptr_string, @string, (void **) ptr_string.ToPointer(), 0, __fixedLocals => {
                     fixed (int *ptr_length = @length) {
-                        Native_ShaderSourceARB(@shaderObj, @count, (char **) ptr_chars_string.ToPointer(), @ptr_length);
+                        Native_ShaderSourceARB(@shaderObj, @count, (byte **) ptr_string.ToPointer(), @ptr_length);
                     }
-                });
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_string);
+                Marshal.FreeHGlobal(ptr_string);
             }
         }
 
@@ -19427,23 +19585,27 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glSpecializeShader")]
-        static extern void Native_SpecializeShader(uint @shader, string @pEntryPoint, uint @numSpecializationConstants, uint* @pConstantIndex, uint* @pConstantValue);
+        static extern void Native_SpecializeShader(uint @shader, byte* @pEntryPoint, uint @numSpecializationConstants, uint* @pConstantIndex, uint* @pConstantValue);
 
-        public void SpecializeShader(uint @shader, string @pEntryPoint, uint @numSpecializationConstants, uint[] @pConstantIndex, uint[] @pConstantValue) {
-            fixed (uint *ptr_pConstantIndex = @pConstantIndex) {
-                fixed (uint *ptr_pConstantValue = @pConstantValue) {
-                    Native_SpecializeShader(@shader, @pEntryPoint, @numSpecializationConstants, @ptr_pConstantIndex, @ptr_pConstantValue);
+        public void SpecializeShader(uint @shader, byte[] @pEntryPoint, uint @numSpecializationConstants, uint[] @pConstantIndex, uint[] @pConstantValue) {
+            fixed (byte *ptr_pEntryPoint = @pEntryPoint) {
+                fixed (uint *ptr_pConstantIndex = @pConstantIndex) {
+                    fixed (uint *ptr_pConstantValue = @pConstantValue) {
+                        Native_SpecializeShader(@shader, @ptr_pEntryPoint, @numSpecializationConstants, @ptr_pConstantIndex, @ptr_pConstantValue);
+                    }
                 }
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glSpecializeShaderARB")]
-        static extern void Native_SpecializeShaderARB(uint @shader, string @pEntryPoint, uint @numSpecializationConstants, uint* @pConstantIndex, uint* @pConstantValue);
+        static extern void Native_SpecializeShaderARB(uint @shader, byte* @pEntryPoint, uint @numSpecializationConstants, uint* @pConstantIndex, uint* @pConstantValue);
 
-        public void SpecializeShaderARB(uint @shader, string @pEntryPoint, uint @numSpecializationConstants, uint[] @pConstantIndex, uint[] @pConstantValue) {
-            fixed (uint *ptr_pConstantIndex = @pConstantIndex) {
-                fixed (uint *ptr_pConstantValue = @pConstantValue) {
-                    Native_SpecializeShaderARB(@shader, @pEntryPoint, @numSpecializationConstants, @ptr_pConstantIndex, @ptr_pConstantValue);
+        public void SpecializeShaderARB(uint @shader, byte[] @pEntryPoint, uint @numSpecializationConstants, uint[] @pConstantIndex, uint[] @pConstantValue) {
+            fixed (byte *ptr_pEntryPoint = @pEntryPoint) {
+                fixed (uint *ptr_pConstantIndex = @pConstantIndex) {
+                    fixed (uint *ptr_pConstantValue = @pConstantValue) {
+                        Native_SpecializeShaderARB(@shader, @ptr_pEntryPoint, @numSpecializationConstants, @ptr_pConstantIndex, @ptr_pConstantValue);
+                    }
                 }
             }
         }
@@ -20570,7 +20732,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_TexCoordPointerListIBM(@size, @type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -20584,7 +20746,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_TexCoordPointervINTEL(@size, @type, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -21641,32 +21803,30 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glTransformFeedbackVaryings")]
-        static extern void Native_TransformFeedbackVaryings(uint @program, int @count, char** @varyings, uint @bufferMode);
+        static extern void Native_TransformFeedbackVaryings(uint @program, int @count, byte** @varyings, uint @bufferMode);
 
-        public void TransformFeedbackVaryings(uint @program, int @count, string[] @varyings, uint @bufferMode) {
-            char[][] chars_varyings = @varyings.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_varyings = Marshal.AllocHGlobal(@chars_varyings.Length * sizeof(void *));
+        public void TransformFeedbackVaryings(uint @program, int @count, byte[][] @varyings, uint @bufferMode) {
+            IntPtr ptr_varyings = Marshal.AllocHGlobal(@varyings.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_varyings, @chars_varyings, (void **) ptr_chars_varyings.ToPointer(), 0, __fixedLocals => {
-                    Native_TransformFeedbackVaryings(@program, @count, (char **) ptr_chars_varyings.ToPointer(), @bufferMode);
-                });
+                ConvertDoubleArray_byte(ptr_varyings, @varyings, (void **) ptr_varyings.ToPointer(), 0, __fixedLocals => {
+                    Native_TransformFeedbackVaryings(@program, @count, (byte **) ptr_varyings.ToPointer(), @bufferMode);
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_varyings);
+                Marshal.FreeHGlobal(ptr_varyings);
             }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glTransformFeedbackVaryingsEXT")]
-        static extern void Native_TransformFeedbackVaryingsEXT(uint @program, int @count, char** @varyings, uint @bufferMode);
+        static extern void Native_TransformFeedbackVaryingsEXT(uint @program, int @count, byte** @varyings, uint @bufferMode);
 
-        public void TransformFeedbackVaryingsEXT(uint @program, int @count, string[] @varyings, uint @bufferMode) {
-            char[][] chars_varyings = @varyings.Select(s => s.ToCharArray()).ToArray();
-            IntPtr ptr_chars_varyings = Marshal.AllocHGlobal(@chars_varyings.Length * sizeof(void *));
+        public void TransformFeedbackVaryingsEXT(uint @program, int @count, byte[][] @varyings, uint @bufferMode) {
+            IntPtr ptr_varyings = Marshal.AllocHGlobal(@varyings.Length * sizeof(void *));
             try {
-                ConvertDoubleArray_char(ptr_chars_varyings, @chars_varyings, (void **) ptr_chars_varyings.ToPointer(), 0, __fixedLocals => {
-                    Native_TransformFeedbackVaryingsEXT(@program, @count, (char **) ptr_chars_varyings.ToPointer(), @bufferMode);
-                });
+                ConvertDoubleArray_byte(ptr_varyings, @varyings, (void **) ptr_varyings.ToPointer(), 0, __fixedLocals => {
+                    Native_TransformFeedbackVaryingsEXT(@program, @count, (byte **) ptr_varyings.ToPointer(), @bufferMode);
+                }, new void *[0]);
             } finally {
-                Marshal.FreeHGlobal(ptr_chars_varyings);
+                Marshal.FreeHGlobal(ptr_varyings);
             }
         }
 
@@ -25567,7 +25727,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_VertexPointerListIBM(@size, @type, @stride, (byte **) ptr_pointer.ToPointer(), @ptrstride);
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -25581,7 +25741,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
             try {
                 ConvertDoubleArray_byte(ptr_pointer, @pointer, (void **) ptr_pointer.ToPointer(), 0, __fixedLocals => {
                     Native_VertexPointervINTEL(@size, @type, (byte **) ptr_pointer.ToPointer());
-                });
+                }, new void *[0]);
             } finally {
                 Marshal.FreeHGlobal(ptr_pointer);
             }
@@ -26618,10 +26778,12 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glGetVkProcAddrNV")]
-        static extern IntPtr Native_GetVkProcAddrNV(string @name);
+        static extern IntPtr Native_GetVkProcAddrNV(byte* @name);
 
-        public IntPtr GetVkProcAddrNV(string @name) {
-            return Native_GetVkProcAddrNV(@name);
+        public IntPtr GetVkProcAddrNV(byte[] @name) {
+            fixed (byte *ptr_name = @name) {
+                return Native_GetVkProcAddrNV(@ptr_name);
+            }
         }
 
         [DllImport("OpenGL32", CallingConvention = CallingConvention.Cdecl, EntryPoint = "glWaitVkSemaphoreNV")]

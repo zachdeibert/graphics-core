@@ -12,7 +12,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop.Generator {
             _["void"] = new ConvertedType("void", null);
             _["void *"] = new ConvertedType("IntPtr", "byte[]");
             _["void **"] = _["void *const*"] = new ConvertedType("IntPtr", "byte[][]");
-            _["char"] = new ConvertedType("char");
+            _["char"] = new ConvertedType("byte");
             _["int8_t"] = _["signed char"] = new ConvertedType("sbyte");
             _["uint8_t"] = _["unsigned char"] = new ConvertedType("byte");
             _["int16_t"] = _["short"] = _["short int"] = _["signed short"] = _["signed short int"] = new ConvertedType("short");
@@ -26,9 +26,9 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop.Generator {
             _["GLboolean"] = new ConvertedType("bool");
             _["GLboolean*"] = new ConvertedType(_["GLboolean"]);
             _["GLhandleARB"] = _["GLsync"] = _["struct _cl_context*"] = _["struct _cl_event*"] = _["GLDEBUGPROC"] = _["GLDEBUGPROCAMD"] = _["GLDEBUGPROCARB"] = _["GLDEBUGPROCKHR"] = _["GLVULKANPROCNV"] = new ConvertedType("IntPtr");
-            _["GLchar*"] = new ConvertedType("string");
+            _["GLchar*"] = new ConvertedType("byte[]");
             _["GLchar**"] = new ConvertedType(_["GLchar*"]);
-            _["GLcharARB*"] = new ConvertedType("string");
+            _["GLcharARB*"] = new ConvertedType("byte[]");
             _["GLcharARB**"] = new ConvertedType(_["GLcharARB*"]);
         }
 

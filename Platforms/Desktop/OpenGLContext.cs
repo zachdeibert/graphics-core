@@ -173,7 +173,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_bool(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_bool(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -184,7 +184,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_byte(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_byte(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_sbyte(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_sbyte(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_char(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_char(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -217,7 +217,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_decimal(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_decimal(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -228,7 +228,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_double(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_double(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -239,7 +239,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_float(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_float(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -250,7 +250,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_int(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_int(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -261,7 +261,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_uint(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_uint(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -272,7 +272,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_long(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_long(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -283,7 +283,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_ulong(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_ulong(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_short(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_short(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -305,7 +305,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     cb(fixedLocals);
                 } else {
-                    ConvertDoubleArray_ushort(val, arr, ptr, i, cb);
+                    ConvertDoubleArray_ushort(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -315,7 +315,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_bool(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_bool(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -326,7 +326,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_byte(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_byte(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -337,7 +337,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_sbyte(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_sbyte(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -348,7 +348,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_char(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_char(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -359,7 +359,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_decimal(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_decimal(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -370,7 +370,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_double(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_double(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -381,7 +381,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_float(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_float(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -392,7 +392,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_int(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_int(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -403,7 +403,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_uint(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_uint(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -414,7 +414,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_long(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_long(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -425,7 +425,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_ulong(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_ulong(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -436,7 +436,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_short(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_short(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
@@ -447,7 +447,7 @@ namespace Com.GitHub.ZachDeibert.GraphicsCore.Platforms.Desktop {
                 if (++i == arr.Length) {
                     return cb(fixedLocals);
                 } else {
-                    return ConvertDoubleArray_ushort(val, arr, ptr, i, cb);
+                    return ConvertDoubleArray_ushort(val, arr, ptr, i, cb, fixedLocals);
                 }
             }
         }
